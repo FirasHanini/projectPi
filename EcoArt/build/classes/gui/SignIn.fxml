@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SignInController">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #D68910;" />
+      <AnchorPane layoutX="351.0" prefHeight="500.0" prefWidth="350.0">
+         <children>
+            <TextField fx:id="entryUsername" layoutX="86.0" layoutY="185.0" prefHeight="28.0" prefWidth="178.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="entryPassword" layoutX="86.0" layoutY="250.0" prefHeight="28.0" prefWidth="178.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="btnLogin" layoutX="118.0" layoutY="339.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: #D68910;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Hyperlink fx:id="linkForgotPaswd" layoutX="78.0" layoutY="292.0" onAction="#forgotPassword" text="Forgot Your password ?" textFill="#d68910" />
+            <Hyperlink fx:id="linkNewAccount" layoutX="86.0" layoutY="419.0" onAction="#createAccount" text="Create New Account" textFill="#d68910">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
