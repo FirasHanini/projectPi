@@ -38,7 +38,7 @@ public class EcoArt {
         
          MailValidation.sendVerificationCode("aziz.benslimene@esprit.tn", "validation mail blyaad"); */
         
-        System.out.println(MailValidation.generateVerificationCode());
+        //System.out.println(MailValidation.generateVerificationCode());
         
         
     }

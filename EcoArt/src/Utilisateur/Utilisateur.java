@@ -26,7 +26,7 @@ public class Utilisateur {
     private String password;
     
     
-    public Utilisateur(String CIN, String nom, String prenom, String DateNaissance, int age, String pic, String userName, String password) {
+    public Utilisateur(String CIN, String nom, String prenom, String DateNaissance, int age, String pic, String userName, String password, String email) {
         this.CIN = CIN;
         this.nom = nom;
         this.prenom = prenom;
@@ -35,6 +35,7 @@ public class Utilisateur {
         this.pic = pic;
         this.userName = userName;
         this.password = password;
+        this.email=email;
     }
 
     public Utilisateur() {

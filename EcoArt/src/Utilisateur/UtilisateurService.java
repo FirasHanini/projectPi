@@ -11,11 +11,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -201,6 +207,24 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         
         return 0;
     }
+    
+    
+    
+    public String calculeAge(String dateN) throws ParseException {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    LocalDate dateAnniversaire = LocalDate.parse(dateN, formatter);
+    LocalDate dateCourante = LocalDate.now();
+
+    Period difference = Period.between(dateAnniversaire, dateCourante);
+
+    int age = difference.getYears();
+    
+    return String.valueOf(age);
+}
+        
+        
+        
+    
     
     
 }
