@@ -12,15 +12,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 /**
@@ -221,6 +220,47 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
     
     return String.valueOf(age);
 }
+    
+    
+    public int unicUsername(String username){
+        String req="select * from utilisateur where username=?;";
+        
+        try {
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            
+            prepStat.setString(1, username);
+            
+            ResultSet rS= prepStat.executeQuery();
+            if(rS.next())
+                return -1;
+        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return 0;
+    }
+    
+    public int uniEmail (String email){
+        String req="select * from utilisateur where email=?;";
+        
+        try {
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            
+            prepStat.setString(1, email);
+            
+            ResultSet rS= prepStat.executeQuery();
+            if(rS.next())
+                return -1;
+        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return 0;
+        
+    }
+    
         
         
         

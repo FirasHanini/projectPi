@@ -9,7 +9,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InscriptionController">
    <children>
-      <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #D68910;" />
+      <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #D68910;">
+         <children>
+            <Label fx:id="mdpError" layoutX="57.0" layoutY="630.0" prefHeight="28.0" prefWidth="192.0" textFill="RED" />
+         </children></AnchorPane>
       <AnchorPane layoutX="298.0" prefHeight="700.0" prefWidth="402.0">
          <children>
             <TextField fx:id="entryName" layoutX="120.0" layoutY="58.0" promptText="Name" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
@@ -18,12 +21,11 @@
             <TextField fx:id="entryUsername" layoutX="120.0" layoutY="528.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
             <PasswordField fx:id="entryPasswordOne" layoutX="120.0" layoutY="238.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
             <PasswordField fx:id="entryPasswordConfirm" layoutX="120.0" layoutY="298.0" promptText="Confirm Password" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
-            <DatePicker fx:id="entryBirthday" layoutX="120.0" layoutY="408.0" onMouseEntered="#dateArea" promptText="Date of Birth" style="-fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
+            <DatePicker fx:id="entryBirthday" layoutX="120.0" layoutY="408.0" onMouseExited="#dateArea" promptText="Date of Birth" style="-fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px; -fx-background-color: transparent;" />
             <TextField fx:id="entryAge" layoutX="120.0" layoutY="468.0" promptText="Age" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="signUp" layoutX="142.0" layoutY="633.0" mnemonicParsing="false" onAction="#signUpBtn" prefHeight="35.0" prefWidth="106.0" style="-fx-background-color: #D68910;" text="Sign Up" />
             <Button fx:id="uploadPcbtn" layoutX="120.0" layoutY="574.0" mnemonicParsing="false" onAction="#onUpload" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 2px 2px 2px 2px;" text="Upload Picture" />
             <TextField fx:id="entryCin" layoutX="120.0" layoutY="358.0" promptText="CIN" style="-fx-background-color: transparent; -fx-border-color: #D68910; -fx-border-width: 0px 0px 2px 0px;" />
-            <Label fx:id="mdpError" layoutX="120.0" layoutY="332.0" textFill="RED" />
          </children>
       </AnchorPane>
    </children>

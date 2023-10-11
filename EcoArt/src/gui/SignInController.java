@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -61,7 +62,13 @@ public class SignInController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Inscription.fxml"));
             Parent root = loader.load();
             InscriptionController ic=loader.getController();
+            Stage cStage= (Stage) entryUsername.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
             entryUsername.getScene().setRoot(root);
+            
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
         }
