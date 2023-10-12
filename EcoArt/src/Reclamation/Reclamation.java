@@ -15,13 +15,39 @@ public class Reclamation {
     
     private long id;
     private String contenu;
+    private State etat;
+    private String reponse;
 
     public Reclamation() {
+        this.etat=State.WAITING;
     }
 
-    public Reclamation(long id, String contenu) {
+    public Reclamation(long id, String contenu,String reponse) {
         this.id = id;
         this.contenu = contenu;
+        this.etat=State.WAITING;
+        this.reponse=reponse;
+    }
+
+    public State getEtat() {
+        return etat;
+    }
+
+    public void setEtat(State etat) {
+        this.etat = etat;
+    }
+    
+    
+    
+
+   
+
+    public String getReponse() {
+        return reponse;
+    }
+
+    public void setReponse(String reponse) {
+        this.reponse = reponse;
     }
 
     public long getId() {
@@ -42,9 +68,11 @@ public class Reclamation {
 
     @Override
     public String toString() {
-        return "Reclamation{" + "contenu=" + contenu + '}';
+        return "Reclamation{" + "contenu=" + contenu + ", etat=" + etat + ", reponse=" + reponse + '}';
     }
 
+   
+    
    
 
     @Override

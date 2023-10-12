@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #D68910;">
          <children>
-            <Label fx:id="mdpError" layoutX="57.0" layoutY="630.0" prefHeight="28.0" prefWidth="192.0" textFill="RED" />
+            <Label fx:id="mdpError" layoutX="11.0" layoutY="589.0" style="-fx-background-color: grey;" textFill="RED" />
          </children></AnchorPane>
       <AnchorPane layoutX="298.0" prefHeight="700.0" prefWidth="402.0">
          <children>

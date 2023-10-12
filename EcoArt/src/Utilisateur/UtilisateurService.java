@@ -68,19 +68,23 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
 
     @Override
     public Utilisateur chercher(Utilisateur u) {
-        String req="SELECT * FROM `utilisateur` WHERE `cin` LIKE ? AND `nom` LIKE ? AND `prenom` LIKE ? AND "
-                + "`date_naissance` = ? AND `age` = ? AND  `username` LIKE ? ;";
+       // String req="SELECT * FROM `utilisateur` WHERE `cin` LIKE ? AND `nom` LIKE ? AND `prenom` LIKE ? AND "
+         //       + "`date_naissance` = ? AND `age` = ? AND  `username` LIKE ? ;";
+         String req="SELECT * FROM `utilisateur` WHERE  `username` LIKE ? ;";
+         
         Utilisateur found = new Utilisateur();
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             
-            prepStat.setString(1, u.getCIN());
+         /*  prepStat.setString(1, u.getCIN());
             prepStat.setString(2, u.getNom());
             prepStat.setString(3, u.getPrenom());
             prepStat.setString(4, u.getDateNaissance());
             prepStat.setInt(5, u.getAge());
            
-            prepStat.setString(6, u.getUserName());
+            prepStat.setString(6, u.getUserName());*/
+         
+         prepStat.setString(1, u.getUserName());
             
             ResultSet rS= prepStat.executeQuery();
             if(!rS.next())
@@ -104,10 +108,11 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
     @Override
     public int supprimer(Utilisateur u) {
         
-        String req="DELETE FROM utilisateur WHERE `utilisateur`.`id` = ?;";
+        String req="DELETE FROM utilisateur WHERE `utilisateur`.`username` LIKE ?;";
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
-            prepStat.setLong(1, u.getId());
+           // prepStat.setLong(1, u.getId());
+           prepStat.setString(1, u.getUserName());
             int rowsAffected =  prepStat.executeUpdate();
             if(rowsAffected==0)
                 return -1;

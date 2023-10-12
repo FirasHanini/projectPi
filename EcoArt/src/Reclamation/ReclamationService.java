@@ -27,11 +27,12 @@ public class ReclamationService implements MyCrud<Reclamation> {
 
     @Override
     public int ajouter(Reclamation t) {
-        String req="INSERT INTO `reclamation` ( `contenu`) VALUES (?);";
+        String req="INSERT INTO `reclamation` ( `contenu`, `etat`) VALUES (?, ?);";
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setString(1, t.getContenu());
+            prepStat.setString(2, t.getEtat().name());
             int rowsAffected =  prepStat.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -47,10 +48,14 @@ public class ReclamationService implements MyCrud<Reclamation> {
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setLong(1, t.getId());
+            
+            
             ResultSet rS= prepStat.executeQuery();
             if (!rS.next())
                 return null;
             found.setContenu(rS.getString("contenu"));
+            found.setEtat(State.valueOf(rS.getString("etat")));
+          //  found.setReponse(rS.getString("reponse"));
             
             
         } catch (SQLException ex) {
@@ -61,11 +66,14 @@ public class ReclamationService implements MyCrud<Reclamation> {
 
     @Override
     public int supprimer(Reclamation t) {
+        if(this.chercher(t)==null)
+            return -1;
         String req=" DELETE FROM reclamation WHERE `reclamation`.`id` = ?;";
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setFloat(1, t.getId());
+            int rowsAffected =  prepStat.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -98,16 +106,19 @@ public class ReclamationService implements MyCrud<Reclamation> {
 
     @Override
     public Reclamation modifier(Reclamation t, Reclamation nouveau) {
-        String req ="UPDATE `reclamation` SET `contenu` = ? WHERE `reclamation`.`id` = ?;";
+        String req ="UPDATE `reclamation` SET `contenu` = ? , `etat` = ? , `reponse` = ? "
+                + "WHERE `reclamation`.`id` = ?;";
         
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setString(1, nouveau.getContenu());
-            prepStat.setLong(2, t.getId());
+            prepStat.setString(2, nouveau.getEtat().name());
+            prepStat.setString(3, nouveau.getReponse());
+            prepStat.setLong(4, t.getId());
             int rowsAffected =  prepStat.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ReclamationService.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
         }
         
         

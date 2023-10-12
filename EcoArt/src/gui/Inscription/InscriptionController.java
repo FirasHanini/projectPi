@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.Inscription;
 
 import Utilisateur.MailValidation;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
-import gui.Inscription.MailVerificationCodeController;
 
 import java.io.File;
 import java.io.IOException;
@@ -95,6 +94,7 @@ public class InscriptionController implements Initializable {
         String cin = entryCin.getText();
         String dN = entryBirthday.getValue().toString();
         String age = entryAge.getText();
+        
         Utilisateur nouveau=new Utilisateur();
         
         
@@ -138,6 +138,10 @@ public class InscriptionController implements Initializable {
             this.mdpError.setText("Username already exist !");
             i++;
         }
+        
+      //  if(pic.length()==0)
+     //      pic="";
+        
             
         
         //////////////////////////////////////////////////////////////////////////

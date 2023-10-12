@@ -5,6 +5,9 @@
  */
 package ecoart;
 
+import Reclamation.Reclamation;
+import Reclamation.ReclamationService;
+import Reclamation.State;
 import Utilisateur.MailValidation;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
@@ -23,6 +26,7 @@ public class EcoArt {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        ReclamationService rS= new ReclamationService();
         UtilisateurService uS = new UtilisateurService();
         /*Utilisateur u=new Utilisateur("123", "test", "bentest", "2000-02-03", 23, "../../r", "nom123", "123nom");
         Utilisateur n=new Utilisateur("145", "person", "benPerson", "2020-02-03", 3, "../../r", "person321", "123nom");
@@ -39,6 +43,15 @@ public class EcoArt {
          MailValidation.sendVerificationCode("aziz.benslimene@esprit.tn", "validation mail blyaad"); */
         
         //System.out.println(MailValidation.generateVerificationCode());
+        
+        Reclamation rec=new Reclamation(2,"selem","sss");
+        Reclamation nv=new Reclamation(2,"selem","sss");
+        nv.setEtat(State.ANSWERED);
+        
+        System.out.println(rS.supprimer(rec));
+        
+        
+        
         
         
     }
