@@ -29,7 +29,7 @@ public class MyConnection {
     public static MyConnection getInstance (){
         if(instanceConx==null)
             try {
-                return new MyConnection();
+                instanceConx= new MyConnection();
         } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
         }

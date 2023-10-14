@@ -7,14 +7,14 @@ package Reclamation;
 
 import Connection.MyConnection;
 import InterfaceCrud.MyCrud;
+import Utilisateur.Utilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -25,14 +25,30 @@ public class ReclamationService implements MyCrud<Reclamation> {
     MyConnection conx= MyConnection.getInstance();
     Connection myConx=conx.getConnection();
 
+    private ReclamationService() {
+    }
+    
+    
+    
+    private static ReclamationService instance ;
+    
+    
+    public static ReclamationService getInstance(){
+        if(instance==null)
+            instance=new ReclamationService();
+        
+        return instance;      
+    }
+
     @Override
     public int ajouter(Reclamation t) {
-        String req="INSERT INTO `reclamation` ( `contenu`, `etat`) VALUES (?, ?);";
+        String req="INSERT INTO `reclamation` ( `contenu`, `etat`,`senderid`) VALUES (?, ?,?);";
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setString(1, t.getContenu());
-            prepStat.setString(2, t.getEtat().name());
+            prepStat.setString(2, t.getEtat());
+            prepStat.setLong(3, t.getSender().getId());
             int rowsAffected =  prepStat.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -113,7 +129,7 @@ public class ReclamationService implements MyCrud<Reclamation> {
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
             prepStat.setString(1, nouveau.getContenu());
-            prepStat.setString(2, nouveau.getEtat().name());
+            prepStat.setString(2, nouveau.getEtat());
             prepStat.setString(3, nouveau.getReponse());
             prepStat.setLong(4, t.getId());
             int rowsAffected =  prepStat.executeUpdate();
@@ -123,6 +139,30 @@ public class ReclamationService implements MyCrud<Reclamation> {
         
         
         return nouveau;
+    }
+    
+      public List<Reclamation> retournerParUtilisateur( Utilisateur u) {
+        String req="SELECT * FROM `reclamation` where senderid=?";
+        List<Reclamation> retour = new ArrayList();
+        
+        try {
+            
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            prepStat.setFloat(1, u.getId());
+            ResultSet rS= prepStat.executeQuery();
+            while(rS.next())
+            {
+            Reclamation found= new Reclamation();
+            found.setContenu(rS.getString("contenu"));
+         
+            retour.add(found);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return retour;
     }
     
 }

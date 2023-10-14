@@ -5,6 +5,9 @@
  */
 package Utilisateur;
 
+import Reclamation.Reclamation;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -22,8 +25,25 @@ public class Utilisateur {
     private String pic;
     
     private String email;
+
+    
     private String userName;
     private String password;
+    
+    private Type type;
+
+    public String getType() {
+        return type.name();
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
+    
+    //association Reclamation
+    
+    //private List<Reclamation> reclamations;
     
     
     public Utilisateur(String CIN, String nom, String prenom, String DateNaissance, int age, String pic, String userName, String password, String email) {
@@ -36,11 +56,24 @@ public class Utilisateur {
         this.userName = userName;
         this.password = password;
         this.email=email;
+       
     }
+    
+    
+    
 
     public Utilisateur() {
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     public void setId(long id) {
         this.id = id;
     }

@@ -5,6 +5,9 @@
  */
 package gui.ReclamationClient;
 
+import Reclamation.Reclamation;
+import Reclamation.ReclamationService;
+import Reclamation.State;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -24,6 +27,10 @@ public class ReclamationClientController implements Initializable {
     private TextArea entryContenu;
     @FXML
     private Button btnSend;
+    
+    ReclamationService service = ReclamationService.getInstance(); 
+    
+    Reclamation sent=new Reclamation();
 
     /**
      * Initializes the controller class.
@@ -35,6 +42,13 @@ public class ReclamationClientController implements Initializable {
 
     @FXML
     private void onSend(ActionEvent event) {
+        String contenu = entryContenu.getText();
+        sent.setContenu(contenu);
+        sent.setEtat(State.WAITING);
+        
+        service.ajouter(sent);
+        
+        
     }
     
 }

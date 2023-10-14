@@ -30,8 +30,8 @@ public class FXMain extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-            
+          //  Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ReclamationClient/PageReclamations.fxml"));
             Scene scene = new Scene(root);
             
             primaryStage.setTitle("Sign in");

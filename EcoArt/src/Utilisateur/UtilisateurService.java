@@ -7,6 +7,7 @@ package Utilisateur;
 
 import Connection.MyConnection;
 import InterfaceCrud.MyCrud;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,8 +42,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         if(this.chercher(u)!=null)
             return -1; 
         
-        String req="INSERT INTO `utilisateur` ( `cin`, `nom`, `prenom`, `date_naissance`, `age`, `pic`, `username`, `password`)"
-                    + " VALUES ( ?,?, ?,?,?, ?, ?, ?);";
+        String req="INSERT INTO `utilisateur` ( `cin`, `nom`, `prenom`, `date_naissance`, `age`, `pic`, `username`, `password`,`type`)"
+                    + " VALUES ( ?,?, ?,?,?, ?, ?, ?,?);";
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -55,6 +56,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             prepStat.setString(6, u.getPic());
             prepStat.setString(7, u.getUserName());
             prepStat.setString(8, u.getPassword());
+            prepStat.setString(9, u.getType());
             int rowsAffected =  prepStat.executeUpdate();
             
             
@@ -96,6 +98,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             found.setDateNaissance(rS.getString("date_naissance"));
             found.setAge(rS.getInt("age"));
             found.setUserName(rS.getString("username"));
+            found.setType(Type.valueOf(rS.getString("type")));
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -161,7 +164,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
        
             
             String req ="UPDATE `utilisateur` SET `cin` = ?, `nom` = ?, `prenom` = ?, "
-                    + "`date_naissance` = ?, `age` = ?, `pic` = ?, `username` = ?, `password` = ? WHERE `utilisateur`.`id` = 5;";
+                    + "`date_naissance` = ?, `age` = ?, `pic` = ?, `username` = ?, `password` = ? WHERE `utilisateur`.`id` = ?;";
         try {
             
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -173,7 +176,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             prepStat.setString(6, n.getPic());
             prepStat.setString(7, n.getUserName());
             prepStat.setString(8, n.getPassword());
-           // prepStat.setLong(9, u.getId());
+            prepStat.setLong(9, u.getId());
             int rowsAffected =  prepStat.executeUpdate();
            
             
@@ -186,9 +189,10 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
     }
     
     
-    
+    ///////////////////////////////////////////////////////LOGIN/////////////////////////////////////////////////
     public int login (String username , String password){
         String req="select password from utilisateur where username=?;";
+       
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -200,18 +204,27 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
                 return -1;
             if(!password.equals(rS.getString("password")))
                 return -2;
-            
+           
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    
-       
+        
         
         
         return 0;
     }
     
+    public int getIfAdmin(String username){
+        Utilisateur chercher=new Utilisateur();
+        chercher.setUserName(username);
+        Utilisateur found = this.chercher(chercher);
+        
+        if(found.getType()==Type.ADMIN.name())
+            return 1 ;
+        
+        return 0;
+    }
     
     
     public String calculeAge(String dateN) throws ParseException {

@@ -5,6 +5,7 @@
  */
 package Reclamation;
 
+import Utilisateur.Utilisateur;
 import java.util.Objects;
 
 /**
@@ -17,30 +18,41 @@ public class Reclamation {
     private String contenu;
     private State etat;
     private String reponse;
+    
+    
+    //association utilisateur
+    private Utilisateur sender;
+
+    
 
     public Reclamation() {
         this.etat=State.WAITING;
     }
 
-    public Reclamation(long id, String contenu,String reponse) {
+    public Reclamation(long id, String contenu,String reponse, Utilisateur sender) {
         this.id = id;
         this.contenu = contenu;
         this.etat=State.WAITING;
         this.reponse=reponse;
+        this.sender=sender;
+    }
+    
+    public Utilisateur getSender() {
+        return sender;
     }
 
-    public State getEtat() {
-        return etat;
+    public void setSender(Utilisateur sender) {
+        this.sender = sender;
+    }
+
+    public String getEtat() {
+        return etat.name();
     }
 
     public void setEtat(State etat) {
         this.etat = etat;
     }
     
-    
-    
-
-   
 
     public String getReponse() {
         return reponse;
