@@ -9,6 +9,7 @@ import Reclamation.Reclamation;
 import Reclamation.ReclamationService;
 import Reclamation.State;
 import Utilisateur.MailValidation;
+import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import java.util.Date;
@@ -25,6 +26,21 @@ public class EcoArt {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        
+        
+        UtilisateurService ss=UtilisateurService.getInstance();
+        Utilisateur u = new Utilisateur();
+        u.setEmail("firashanini@gmail.com");
+        u.setType(Type.FORMATEUR);
+        u.setCIN("11400929");
+        u.setNom("ff");
+        u.setPrenom("ff");
+        u.setDateNaissance("1997-05-20");
+        u.setPic("54645646");
+        u.setUserName("sqfqsdfqs");
+        u.setPassword("sqfqsdfqs");
+        ss.ajouter(u);
         
         
         

@@ -162,6 +162,7 @@ public class InscriptionController implements Initializable {
         nouveau.setUserName(username);
         nouveau.setPassword(passwd);
         nouveau.setPic(pic);
+        nouveau.setEmail(email);
         nouveau.setType(Type.valueOf(type));
         
             
@@ -171,10 +172,11 @@ public class InscriptionController implements Initializable {
         
         try {
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MailVerificationCode.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MailVerification/MailVerificationCode.fxml"));
         Parent root = loader.load();
         MailVerificationCodeController mvcc=loader.getController();
         mvcc.setCode(code);
+        mvcc.setUtilisateur(nouveau);
         
         Stage cStage=(Stage) entryEmail.getScene().getWindow();
         cStage.setWidth(500);

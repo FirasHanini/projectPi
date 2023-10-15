@@ -51,8 +51,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         if(this.chercher(u)!=null)
             return -1; 
         
-        String req="INSERT INTO `utilisateur` ( `cin`, `nom`, `prenom`, `date_naissance`, `age`, `pic`, `username`, `password`,`type`)"
-                    + " VALUES ( ?,?, ?,?,?, ?, ?, ?,?);";
+        String req="INSERT INTO `utilisateur` ( `cin`, `nom`, `prenom`, `date_naissance`, `age`, `pic`, `username`, `password`,`email`,`type`)"
+                    + " VALUES ( ?,?, ?,?,?, ?, ?, ?,?,?);";
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -65,7 +65,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             prepStat.setString(6, u.getPic());
             prepStat.setString(7, u.getUserName());
             prepStat.setString(8, u.getPassword());
-            prepStat.setString(9, u.getType());
+            prepStat.setString(9, u.getEmail());
+            prepStat.setString(10, u.getType());
             int rowsAffected =  prepStat.executeUpdate();
             
             

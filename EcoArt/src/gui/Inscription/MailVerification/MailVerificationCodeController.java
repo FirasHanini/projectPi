@@ -7,13 +7,18 @@ package gui.Inscription.MailVerification;
 
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
+import gui.EspacePersonel.EspacePersonelController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,7 +34,7 @@ public class MailVerificationCodeController implements Initializable {
     @FXML
     private Label errorCode;
     
-    private Utilisateur user;
+    private Utilisateur current;
 
     /**
      * Initializes the controller class.
@@ -42,7 +47,7 @@ public class MailVerificationCodeController implements Initializable {
     }
     
     public void setUtilisateur(Utilisateur user){
-        this.user=user;
+        this.current=user;
     }
             
     
@@ -60,7 +65,30 @@ public class MailVerificationCodeController implements Initializable {
             errorCode.setText("Verification code does not match");
         else{
             UtilisateurService service= UtilisateurService.getInstance();
-            service.ajouter(user);
+            service.ajouter(current);
+            
+            //////////////////////////////////////Naviguation/////////////////////////////////
+           
+            
+        
+          try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../EspacePersonel/EspacePersonel.fxml"));
+            Parent root = loader.load();
+              EspacePersonelController controller=loader.getController();
+              controller.setter(current);
+              
+            Stage cStage= (Stage) codeVerif.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
+              
+            codeVerif.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
             
         }
         
