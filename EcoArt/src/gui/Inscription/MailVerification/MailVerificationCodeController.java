@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.Inscription;
+package gui.Inscription.MailVerification;
 
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
@@ -59,7 +59,7 @@ public class MailVerificationCodeController implements Initializable {
         if(!verifcode.equals(code))
             errorCode.setText("Verification code does not match");
         else{
-            UtilisateurService service=new UtilisateurService();
+            UtilisateurService service= UtilisateurService.getInstance();
             service.ajouter(user);
             
         }

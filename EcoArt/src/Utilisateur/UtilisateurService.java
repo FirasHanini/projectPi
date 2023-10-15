@@ -29,7 +29,16 @@ import java.util.List;
  */
 public class UtilisateurService implements MyCrud<Utilisateur> {
 
-    public UtilisateurService() {
+    private UtilisateurService() {
+    }
+    
+    private static UtilisateurService instance ;
+    
+    public static UtilisateurService getInstance(){
+        if(instance==null)
+            instance=new UtilisateurService();
+        
+        return instance;
     }
     
     
@@ -97,8 +106,10 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             found.setPrenom(rS.getString("Prenom"));
             found.setDateNaissance(rS.getString("date_naissance"));
             found.setAge(rS.getInt("age"));
+            found.setEmail(rS.getString("email"));
             found.setUserName(rS.getString("username"));
             found.setType(Type.valueOf(rS.getString("type")));
+            found.setPic(rS.getString("pic"));
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

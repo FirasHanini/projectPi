@@ -5,7 +5,9 @@
  */
 package gui.Inscription;
 
+import gui.Inscription.MailVerification.MailVerificationCodeController;
 import Utilisateur.MailValidation;
+import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 
@@ -23,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -69,13 +72,16 @@ public class InscriptionController implements Initializable {
     String picPath ;
     
     
-    UtilisateurService service=new UtilisateurService();
+    UtilisateurService service= UtilisateurService.getInstance();
     @FXML
     private Label mdpError;
+    @FXML
+    private ChoiceBox<String> typechoiceBox=new ChoiceBox<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        typechoiceBox.getItems().addAll(Type.FORMATEUR.name(),Type.VENDEUR.name(),Type.VISITEUR.name());
+        typechoiceBox.setValue(Type.VISITEUR.name());
         
     }    
 
@@ -94,7 +100,7 @@ public class InscriptionController implements Initializable {
         String cin = entryCin.getText();
         String dN = entryBirthday.getValue().toString();
         String age = entryAge.getText();
-        
+        String type = typechoiceBox.getValue();
         Utilisateur nouveau=new Utilisateur();
         
         
@@ -156,6 +162,7 @@ public class InscriptionController implements Initializable {
         nouveau.setUserName(username);
         nouveau.setPassword(passwd);
         nouveau.setPic(pic);
+        nouveau.setType(Type.valueOf(type));
         
             
         String code = MailValidation.generateVerificationCode();

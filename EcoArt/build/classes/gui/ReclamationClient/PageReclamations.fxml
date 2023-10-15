@@ -14,7 +14,6 @@
       </AnchorPane>
       <Button fx:id="backButton" layoutX="64.0" layoutY="460.0" mnemonicParsing="false" onAction="#onBack" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #566573;" text="Back" />
       <Button fx:id="addReclamation" layoutX="417.0" layoutY="460.0" mnemonicParsing="false" onAction="#onAddReclamation" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #566573;" text="Add" />
-      <Button fx:id="temp" layoutX="89.0" layoutY="159.0" mnemonicParsing="false" onAction="#onRefrech" text="refrechTemp" />
       <TableView fx:id="reclamationView" layoutX="52.0" layoutY="203.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: transparent;">
         <columns>
           <TableColumn fx:id="champcontenu" prefWidth="250.0" text="Content" />

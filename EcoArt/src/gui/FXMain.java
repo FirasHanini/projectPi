@@ -5,6 +5,7 @@
  */
 package gui;
 
+import gui.EspacePersonel.EspacePersonelController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,8 +31,9 @@ public class FXMain extends Application {
         
         
         try {
-          //  Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
-            Parent root = FXMLLoader.load(getClass().getResource("ReclamationClient/PageReclamations.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("signIn/SignIn.fxml"));
+           // Parent root = FXMLLoader.load(getClass().getResource("EspacePersonel/EspacePersonel.fxml"));
+            
             Scene scene = new Scene(root);
             
             primaryStage.setTitle("Sign in");

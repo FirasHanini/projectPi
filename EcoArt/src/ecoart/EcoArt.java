@@ -26,32 +26,7 @@ public class EcoArt {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        ReclamationService rS= ReclamationService.getInstance();
-        UtilisateurService uS = new UtilisateurService();
-        Utilisateur u=new Utilisateur();
-        u.setId(22);
-       // Utilisateur u=new Utilisateur("123", "test", "bentest", "2000-02-03", 23, "../../r", "nom123", "123nom");
-        /*Utilisateur n=new Utilisateur("145", "person", "benPerson", "2020-02-03", 3, "../../r", "person321", "123nom");
         
-        System.out.println(uS.ajouter(u));
-       
-       for(Utilisateur a : uS.retournerTout())
-            System.out.println(a);
-        
-        System.out.println(uS.login("nom123", "123nom")); 
-        
-        MailValidation mV = new MailValidation();
-        
-         MailValidation.sendVerificationCode("aziz.benslimene@esprit.tn", "validation mail blyaad"); */
-        
-        //System.out.println(MailValidation.generateVerificationCode());
-        
-      /*  Reclamation rec=new Reclamation(2,"selem","sss",uS);
-        Reclamation nv=new Reclamation(2,"selem","sss");
-        nv.setEtat(State.ANSWERED);
-        
-        System.out.println(rS.supprimer(rec));
-        */
         
      
         

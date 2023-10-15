@@ -5,12 +5,14 @@
  */
 package gui.SignIn;
 
+import Utilisateur.Utilisateur;
+import Utilisateur.UtilisateurService;
+import gui.EspacePersonel.EspacePersonelController;
 import gui.Inscription.InscriptionController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +41,8 @@ public class SignInController implements Initializable {
     private Hyperlink linkForgotPaswd;
     @FXML
     private Hyperlink linkNewAccount;
+    
+    UtilisateurService service=UtilisateurService.getInstance();
 
     /**
      * Initializes the controller class.
@@ -50,6 +54,37 @@ public class SignInController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) {
+        
+        String username=entryUsername.getText();
+        String passwd = entryPassword.getText();
+        
+        if(service.login(username, passwd)==0){
+            Utilisateur u = new Utilisateur();
+            u.setUserName(username);
+            Utilisateur current = service.chercher(u);
+            
+        
+          try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EspacePersonel/EspacePersonel.fxml"));
+            Parent root = loader.load();
+            
+            
+              EspacePersonelController controller=loader.getController();
+              controller.setter(current);
+              
+            Stage cStage= (Stage) entryUsername.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
+              
+            entryUsername.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        }
     }
 
     @FXML
@@ -60,7 +95,7 @@ public class SignInController implements Initializable {
     private void createAccount(ActionEvent event) {
         
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Inscription.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Inscription/Inscription.fxml"));
             Parent root = loader.load();
             InscriptionController ic=loader.getController();
             Stage cStage= (Stage) entryUsername.getScene().getWindow();
@@ -71,7 +106,7 @@ public class SignInController implements Initializable {
             
             
         } catch (IOException ex) {
-            Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         
     }
