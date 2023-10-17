@@ -7,6 +7,7 @@ package gui.EspacePersonel;
 
 import Utilisateur.Utilisateur;
 import gui.EspacePersonel.Delete.DeleteController;
+import gui.EspacePersonel.Update.UpdateController;
 import java.io.IOException;
 
 
@@ -102,6 +103,34 @@ public class EspacePersonelController implements Initializable {
 
     @FXML
     private void onUpdate(ActionEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Update/Update.fxml"));
+            Parent root = loader.load();
+            
+            
+            UpdateController controller=loader.getController();
+            
+            controller.setter(current);
+             
+            Stage cStage= (Stage) ageLabel.getScene().getWindow();
+            cStage.setWidth(700);
+            cStage.setHeight(740);
+              
+            ageLabel.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+      
+      
+        
+    }
+
+    @FXML
+    private void onDelete(ActionEvent event) {
+        
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete/Delete.fxml"));
             Parent root = loader.load();
@@ -111,20 +140,13 @@ public class EspacePersonelController implements Initializable {
             controller.setUtilisateur(current);
             
             Stage cStage= (Stage) ageLabel.getScene().getWindow();
-            cStage.setWidth(410);
-            cStage.setHeight(240);
+            cStage.setWidth(425);
+            cStage.setHeight(350);
               
             ageLabel.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-      
-      
-        
-    }
-
-    @FXML
-    private void onDelete(ActionEvent event) {
     }
 
  

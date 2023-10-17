@@ -210,7 +210,7 @@ public class InscriptionController implements Initializable {
         try {
             entryAge.setText(this.service.calculeAge(datN));
         } catch (ParseException ex) {
-            Logger.getLogger(InscriptionController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
        
     }

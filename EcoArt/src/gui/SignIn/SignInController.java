@@ -61,8 +61,8 @@ public class SignInController implements Initializable {
         if(service.login(username, passwd)==0){
             Utilisateur u = new Utilisateur();
             u.setUserName(username);
-            Utilisateur current = service.chercher(u);
-            
+            Utilisateur current = service.chercher(u.getUserName());
+            System.out.println(current);
         
           try {
               
