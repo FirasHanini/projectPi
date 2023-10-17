@@ -205,8 +205,8 @@ public class InscriptionController implements Initializable {
     }
 
     @FXML
-    private void dateArea(MouseEvent event) {
-         String datN=entryBirthday.getValue().toString();
+    private void dateArea(ActionEvent event) {
+        String datN=entryBirthday.getValue().toString();
         try {
             entryAge.setText(this.service.calculeAge(datN));
         } catch (ParseException ex) {
@@ -216,3 +216,9 @@ public class InscriptionController implements Initializable {
     }
     
 }
+/*  String datN=entryBirthday.getValue().toString();
+        try {
+            entryAge.setText(this.service.calculeAge(datN));
+        } catch (ParseException ex) {
+            Logger.getLogger(InscriptionController.class.getName()).log(Level.SEVERE, null, ex);
+        }*/

@@ -82,7 +82,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
     public Utilisateur chercher(Utilisateur u) {
        // String req="SELECT * FROM `utilisateur` WHERE `cin` LIKE ? AND `nom` LIKE ? AND `prenom` LIKE ? AND "
          //       + "`date_naissance` = ? AND `age` = ? AND  `username` LIKE ? ;";
-         String req="SELECT * FROM `utilisateur` WHERE  `username` LIKE ? ;";
+         String req="SELECT * FROM `utilisateur` WHERE  `id` LIKE ? ;";
          
         Utilisateur found = new Utilisateur();
         try {
@@ -96,7 +96,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
            
             prepStat.setString(6, u.getUserName());*/
          
-         prepStat.setString(1, u.getUserName());
+         prepStat.setLong(1, u.getId());
             
             ResultSet rS= prepStat.executeQuery();
             if(!rS.next())
@@ -199,6 +199,44 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         }
         return n;
     }
+    
+    
+   
+    public Utilisateur chercher(String username) {
+       
+         String req="SELECT * FROM `utilisateur` WHERE  `username` LIKE ? ;";
+         
+        Utilisateur found = new Utilisateur();
+        try {
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            
+       
+         
+         prepStat.setString(1, username);
+            
+            ResultSet rS= prepStat.executeQuery();
+            if(!rS.next())
+                return null;
+            found.setId(rS.getLong("id"));
+            found.setCIN(rS.getString("cin"));
+            found.setNom(rS.getString("nom"));
+            found.setPrenom(rS.getString("Prenom"));
+            found.setDateNaissance(rS.getString("date_naissance"));
+            found.setAge(rS.getInt("age"));
+            found.setEmail(rS.getString("email"));
+            found.setUserName(rS.getString("username"));
+            found.setType(Type.valueOf(rS.getString("type")));
+            found.setPic(rS.getString("pic"));
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
+        
+        return found;
+    }
+    
+    
     
     
     ///////////////////////////////////////////////////////LOGIN/////////////////////////////////////////////////

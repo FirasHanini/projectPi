@@ -3,46 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.EspacePersonel;
+package gui.EspacePersonel.Update;
 
 import Utilisateur.Utilisateur;
-import gui.EspacePersonel.Delete.DeleteController;
-import java.io.IOException;
-
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-
-
 
 /**
  * FXML Controller class
  *
  * @author Utilisateur 2
  */
-public class EspacePersonelController implements Initializable {
+public class UpdateController implements Initializable {
 
     @FXML
     private ImageView entryImage;
-    @FXML
-    private Button btnUpdate;
-    @FXML
-    private Button btnDelete;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -57,17 +39,17 @@ public class EspacePersonelController implements Initializable {
     private Label ageLabel;
     @FXML
     private Label cinLabel;
-    
-    Utilisateur current ;
     @FXML
     private Label typeLabel;
+    @FXML
+    private Button confirm;
+    Utilisateur current ;
 
     /**
      * Initializes the controller class.
      */
     
-    
-    public void setter (Utilisateur current){
+     public void setter (Utilisateur current){
         this.ageLabel.setText(String.valueOf(current.getAge()));
         this.birthdayLabel.setText(current.getDateNaissance());
         this.cinLabel.setText(current.getCIN());
@@ -94,49 +76,20 @@ public class EspacePersonelController implements Initializable {
     }
     
     
-  
+    
+    
+    
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
+        // TODO
     }    
 
     @FXML
-    private void onUpdate(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Delete/Delete.fxml"));
-            Parent root = loader.load();
-            
-            
-            DeleteController controller=loader.getController();
-            controller.setUtilisateur(current);
-            
-            Stage cStage= (Stage) ageLabel.getScene().getWindow();
-            cStage.setWidth(410);
-            cStage.setHeight(240);
-              
-            ageLabel.getScene().setRoot(root);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-      
-      
-        
+    private void onConfirm(ActionEvent event) {
     }
-
-    @FXML
-    private void onDelete(ActionEvent event) {
-    }
-
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

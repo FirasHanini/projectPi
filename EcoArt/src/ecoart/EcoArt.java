@@ -27,7 +27,7 @@ public class EcoArt {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        
+        /*
         
         UtilisateurService ss=UtilisateurService.getInstance();
         Utilisateur u = new Utilisateur();
@@ -42,8 +42,8 @@ public class EcoArt {
         u.setPassword("sqfqsdfqs");
         ss.ajouter(u);
         
-        
-        
+        System.out.println(ss.chercher("sqfqsdfqs"));
+        */
      
         
         
