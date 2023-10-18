@@ -13,13 +13,14 @@
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #566573;">
          <children>
-            <Button fx:id="confirm" layoutX="102.0" layoutY="507.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Confirm" />
+            <Button fx:id="confirm" layoutX="95.0" layoutY="630.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Confirm" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="43.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../../nnn.png" />
                </image>
             </ImageView>
             <ImageView fx:id="entryImage" fitHeight="150.0" fitWidth="150.0" layoutX="35.0" layoutY="25.0" onMouseClicked="#onImage" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnUpdatePass" layoutX="73.0" layoutY="411.0" mnemonicParsing="false" onAction="#onUpdatePassw" prefHeight="27.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Update Password" />
          </children>
       </AnchorPane>
       <TextField fx:id="usernameLabel" layoutX="334.0" layoutY="58.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />

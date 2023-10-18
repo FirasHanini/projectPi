@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="438ac90f-93c8-499d-b1b3-6c3ed0672582" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build/classes/Utilisateur/UtilisateurService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Utilisateur/UtilisateurService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/gui/InscriptionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/gui/InscriptionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utilisateur/UtilisateurService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utilisateur/UtilisateurService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/InscriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/InscriptionController.java" afterDir="false" />
-    </list>
+    <list default="true" id="438ac90f-93c8-499d-b1b3-6c3ed0672582" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +20,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Utilisateur 2/Desktop/project PI/projectPi/EcoArt",
+    "last_opened_file_path": "C:/Users/Utilisateur 2/Desktop/project cours spring/foyer-hanini-firas",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -40,6 +34,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697115281207</updated>
       <workItem from="1697115282398" duration="225000" />
+      <workItem from="1697659811925" duration="45000" />
     </task>
     <servers />
   </component>

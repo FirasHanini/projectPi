@@ -9,6 +9,7 @@ import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.EspacePersonel.EspacePersonelController;
+import gui.EspacePersonel.Update.UpdatePassword.UpdatePasswordController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -65,6 +66,8 @@ public class UpdateController implements Initializable {
     UtilisateurService service = UtilisateurService.getInstance();
     @FXML
     private Label mdpError;
+    @FXML
+    private Button btnUpdatePass;
 
     
     
@@ -231,6 +234,26 @@ public class UpdateController implements Initializable {
             System.out.println(ex.getMessage());
         }
         
+    }
+
+    @FXML
+    private void onUpdatePassw(ActionEvent event) {
+           try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdatePassword/UpdatePassword.fxml"));
+            Parent root = loader.load();
+            
+            
+            UpdatePasswordController controller=loader.getController();
+            controller.setUtilisateur(current);
+            
+            Stage cStage= (Stage) this.ageLabel.getScene().getWindow();
+            cStage.setWidth(420);
+            cStage.setHeight(290);
+              
+            ageLabel.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }
