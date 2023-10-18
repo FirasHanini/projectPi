@@ -27,7 +27,7 @@ public class EcoArt {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        /*
+        
         
         UtilisateurService ss=UtilisateurService.getInstance();
         Utilisateur u = new Utilisateur();
@@ -40,10 +40,21 @@ public class EcoArt {
         u.setPic("54645646");
         u.setUserName("sqfqsdfqs");
         u.setPassword("sqfqsdfqs");
-        ss.ajouter(u);
+        
+        /*ss.ajouter(u);
         
         System.out.println(ss.chercher("sqfqsdfqs"));
         */
+        
+        ReclamationService service = ReclamationService.getInstance();
+        Reclamation rec = new Reclamation();
+        rec.setContenu("test");
+        rec.setEtat(State.WAITING);
+        rec.setSender(u);
+        rec.setId(3);
+        //service.supprimer(rec);
+        System.out.println(service.chercher(rec));
+        service.repondreReclamation(rec, "reponse");
      
         
         

@@ -8,14 +8,14 @@ package gui.EspacePersonel;
 import Utilisateur.Utilisateur;
 import gui.EspacePersonel.Delete.DeleteController;
 import gui.EspacePersonel.Update.UpdateController;
+import gui.ReclamationClient.PageReclamationsController;
 import java.io.IOException;
 
 
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,6 +62,8 @@ public class EspacePersonelController implements Initializable {
     Utilisateur current ;
     @FXML
     private Label typeLabel;
+    @FXML
+    private Button rec;
 
     /**
      * Initializes the controller class.
@@ -92,6 +94,7 @@ public class EspacePersonelController implements Initializable {
     entryImage.setImage(img);
 }
         this.current=current;
+         
     }
     
     
@@ -99,6 +102,7 @@ public class EspacePersonelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
  
+       
     }    
 
     @FXML
@@ -147,6 +151,28 @@ public class EspacePersonelController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void onRec(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ReclamationClient/PageReclamations.fxml"));
+            Parent root = loader.load();
+            
+            
+             PageReclamationsController controller=loader.getController();
+            controller.setUtilisateur(current);
+            
+            Stage cStage= (Stage) ageLabel.getScene().getWindow();
+            cStage.setWidth(620);
+            cStage.setHeight(550);
+              
+            ageLabel.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
     }
 
  

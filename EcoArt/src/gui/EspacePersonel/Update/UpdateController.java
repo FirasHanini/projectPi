@@ -8,15 +8,20 @@ package gui.EspacePersonel.Update;
 import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
+import gui.EspacePersonel.EspacePersonelController;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -24,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 
 /**
@@ -164,9 +170,36 @@ public class UpdateController implements Initializable {
         nouveau.setPic(path);
         nouveau.setEmail(email);
         nouveau.setType(Type.valueOf(type));
+             
         nouveau.setPassword(current.getPassword());
         
         service.modifier(current, nouveau);
+        
+        nouveau.setId(current.getId());
+        
+        
+          try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../EspacePersonel/EspacePersonel.fxml"));
+            Parent root = loader.load();
+              EspacePersonelController controller=loader.getController();
+              controller.setter(nouveau);
+              
+            Stage cStage= (Stage) nameLabel.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
+              
+            nameLabel.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+        
+        
           }
         
     }
@@ -186,6 +219,17 @@ public class UpdateController implements Initializable {
         if(f!=null)
             path= f.getAbsolutePath();
          
+        
+    }
+
+    @FXML
+    private void onCalendar(ActionEvent event) {
+        String datN=this.birthdayLabel.getValue().toString();
+        try {
+            this.ageLabel.setText(this.service.calculeAge(datN));
+        } catch (ParseException ex) {
+            System.out.println(ex.getMessage());
+        }
         
     }
     

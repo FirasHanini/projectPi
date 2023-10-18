@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.ReclamationClient.ReclamationAjout;
+package gui.ReclamationClient.ReclamationReponse;
 
 import Reclamation.Reclamation;
-import Reclamation.ReclamationService;
-import Reclamation.State;
 import Utilisateur.Utilisateur;
 import gui.ReclamationClient.PageReclamationsController;
 import java.io.IOException;
@@ -27,16 +25,13 @@ import javafx.stage.Stage;
  *
  * @author Utilisateur 2
  */
-public class ReclamationClientController implements Initializable {
+public class ReclamationReponseController implements Initializable {
 
     @FXML
-    private TextArea entryContenu;
+    private Button btnBack;
     @FXML
-    private Button btnSend;
+    private TextArea entryReponse;
     
-    ReclamationService service = ReclamationService.getInstance(); 
-    
-    Reclamation sent=new Reclamation();
     Utilisateur sender;
 
     /**
@@ -48,15 +43,7 @@ public class ReclamationClientController implements Initializable {
     }    
 
     @FXML
-    private void onSend(ActionEvent event) {
-        String contenu = entryContenu.getText();
-        sent.setContenu(contenu);
-        sent.setEtat(State.WAITING);
-        System.out.println(sender);
-        
-        sent.setSender(sender);
-        System.out.println(sent);
-        service.ajouter(sent);
+    private void onBack(ActionEvent event) {
          try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../PageReclamations.fxml"));
             Parent root = loader.load();
@@ -65,19 +52,21 @@ public class ReclamationClientController implements Initializable {
              PageReclamationsController controller=loader.getController();
             controller.setUtilisateur(sender);
             
-            Stage cStage= (Stage) this.btnSend.getScene().getWindow();
+            Stage cStage= (Stage) this.entryReponse.getScene().getWindow();
             cStage.setWidth(620);
             cStage.setHeight(550);
               
-            btnSend.getScene().setRoot(root);
+            entryReponse.getScene().setRoot(root);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         
-        
     }
     
-    public void setUtilisateur(Utilisateur sender){
+    
+    
+    public void setter(Reclamation rec, Utilisateur sender){
+        this.entryReponse.setText(rec.getReponse());
         this.sender=sender;
     }
     

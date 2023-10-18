@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="gui.EspacePersonel.EspacePersonelController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EspacePersonel.EspacePersonelController">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #566573;">
          <children>
@@ -28,6 +27,7 @@
                   <Image url="@../../../../../nnn.png" />
                </image>
             </ImageView>
+            <Button fx:id="rec" layoutX="83.0" layoutY="628.0" mnemonicParsing="false" onAction="#onRec" prefHeight="26.0" prefWidth="90.0" text="Reclamation" />
          </children>
       </AnchorPane>
       <Label fx:id="usernameLabel" layoutX="334.0" layoutY="50.0" prefHeight="18.0" prefWidth="337.0" text="Label" textAlignment="CENTER">

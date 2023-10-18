@@ -154,6 +154,9 @@ public class ReclamationService implements MyCrud<Reclamation> {
             {
             Reclamation found= new Reclamation();
             found.setContenu(rS.getString("contenu"));
+            found.setId(rS.getLong("id"));
+            found.setEtat(State.valueOf(rS.getString("etat")));
+            found.setReponse(rS.getString("reponse"));
          
             retour.add(found);
                 
@@ -164,5 +167,13 @@ public class ReclamationService implements MyCrud<Reclamation> {
         }
         return retour;
     }
+      
+      
+      public int repondreReclamation(Reclamation r, String reponse){
+          Reclamation nouveau =r;
+          nouveau.setReponse(reponse);
+          this.modifier(r, nouveau);
+          return 0;
+      }
     
 }

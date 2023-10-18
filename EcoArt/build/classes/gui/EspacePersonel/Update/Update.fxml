@@ -25,7 +25,7 @@
       <TextField fx:id="usernameLabel" layoutX="334.0" layoutY="58.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="nameLabel" layoutX="334.0" layoutY="126.0" promptText="Name" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="lastNameLabel" layoutX="334.0" layoutY="198.0" promptText="Lastname" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
-      <DatePicker fx:id="birthdayLabel" layoutX="321.0" layoutY="281.0" promptText="BirthDay" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
+      <DatePicker fx:id="birthdayLabel" layoutX="321.0" layoutY="281.0" onAction="#onCalendar" promptText="BirthDay" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="emailLabel" layoutX="334.0" layoutY="350.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="ageLabel" layoutX="334.0" layoutY="432.0" promptText="Age" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
       <TextField fx:id="cinLabel" layoutX="334.0" layoutY="510.0" promptText="CIN" style="-fx-background-color: transparent; -fx-border-color: #566573; -fx-border-width: 0px 0px 2px 0px;" />
@@ -34,7 +34,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="mdpError" layoutX="317.0" layoutY="639.0" text="Label" textFill="RED">
+      <Label fx:id="mdpError" layoutX="317.0" layoutY="639.0" textFill="RED">
          <font>
             <Font size="16.0" />
          </font>

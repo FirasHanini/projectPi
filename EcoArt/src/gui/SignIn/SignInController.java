@@ -63,6 +63,7 @@ public class SignInController implements Initializable {
             u.setUserName(username);
             Utilisateur current = service.chercher(u.getUserName());
             System.out.println(current);
+            current.setPassword(passwd);
         
           try {
               
