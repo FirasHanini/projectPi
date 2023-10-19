@@ -44,7 +44,7 @@ public class EcoArt {
         /*ss.ajouter(u);
         
         System.out.println(ss.chercher("sqfqsdfqs"));
-        */
+        
         
         ReclamationService service = ReclamationService.getInstance();
         Reclamation rec = new Reclamation();
@@ -55,7 +55,9 @@ public class EcoArt {
         //service.supprimer(rec);
         System.out.println(service.chercher(rec));
         service.repondreReclamation(rec, "reponse");
-     
+     */
+        
+        MailValidation.sendVerificationCode("firashanini@outlook.fr", MailValidation.generateVerificationCode());
         
         
     }

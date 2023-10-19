@@ -23,7 +23,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailValidation {
     
-    // Vérifie si l'adresse e-mail est valide
+    /*
     public static boolean isValidEmail(String email) {
         try {
             InternetAddress internetAddress = new InternetAddress(email);
@@ -33,7 +33,7 @@ public class MailValidation {
             return false;
         }
     }
-
+*/
     
     public static String generateVerificationCode() {
         Date date = new Date();
@@ -62,8 +62,14 @@ public class MailValidation {
         return Integer.toString(heureInt*minuInt*360+dayInt*monthInt*5);
     }
 
+    
+    
+    
+    
+    
+    
    
-    public static void sendVerificationCode(String recipientEmail, String verificationCode) {
+    public static void sendVerificationCode(String recipientEmail, String email) {
         
         String host = "smtp.gmail.com";
         String username = "ecoartteampi@gmail.com";
@@ -89,13 +95,29 @@ public class MailValidation {
             message.setSubject("Code de vérification");
 
             
-            message.setText("Votre code de vérification est : " + verificationCode);
+            message.setText( email);
 
             
             Transport.send(message);
         } catch (MessagingException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    
+    public static String newAccountEmailVerif(Utilisateur nouveau,String code){
+        
+        String retour="Hello "+nouveau.getNom()+" "+nouveau.getPrenom()+"\n Your verification code is:  "+code;
+        
+        
+        return retour;
+    }
+    
+    public static String passwordForgotEmail(Utilisateur nouveau, String code){
+        
+        String retour="Hello "+nouveau.getNom()+" "+nouveau.getPrenom()+"\n Your verification code is:  "+code +"\n Copy and paste this code so "
+                + "you can change your password";
+        return retour;
     }
     
 }

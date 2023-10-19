@@ -166,7 +166,8 @@ public class InscriptionController implements Initializable {
         
             
         String code = MailValidation.generateVerificationCode();
-         MailValidation.sendVerificationCode(email,code); 
+        String message=MailValidation.newAccountEmailVerif(nouveau, code);
+         MailValidation.sendVerificationCode(email,message); 
         
         
         try {
@@ -178,8 +179,8 @@ public class InscriptionController implements Initializable {
         mvcc.setUtilisateur(nouveau);
         
         Stage cStage=(Stage) entryEmail.getScene().getWindow();
-        cStage.setWidth(500);
-        cStage.setHeight(200);
+        cStage.setWidth(540);
+        cStage.setHeight(280);
         entryAge.getScene().setRoot(root);
         
             

@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/ecoart/EcoArt.java</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/EspacePersonel/Update/UpdatePassword/UpdatePasswordController.java</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/SignIn/SignIn.fxml</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/EspacePersonel/Update/UpdatePassword/NewPasswordInput.fxml</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/EspacePersonel/Update/UpdateController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/ForgotPassword/ForgotPasswordController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/ForgotPassword/NewPasswordInputForgotController.java</file>
         </group>
     </open-files>
 </project-private>

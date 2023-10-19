@@ -5,9 +5,11 @@
  */
 package gui.SignIn;
 
+import Utilisateur.MailValidation;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.EspacePersonel.EspacePersonelController;
+import gui.ForgotPassword.ForgotPasswordController;
 import gui.Inscription.InscriptionController;
 import java.io.IOException;
 import java.net.URL;
@@ -90,6 +92,27 @@ public class SignInController implements Initializable {
 
     @FXML
     private void forgotPassword(ActionEvent event) {
+        Utilisateur current = service.chercher(entryUsername.getText());
+            if(current!=null){
+        try {
+            String code= MailValidation.generateVerificationCode();
+            String message = MailValidation.passwordForgotEmail(current, code);
+            MailValidation.sendVerificationCode(current.getEmail(), message);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ForgotPassword/ForgotPassword.fxml"));
+            Parent root = loader.load();
+            ForgotPasswordController ic=loader.getController();
+            ic.setter(current, code);
+            Stage cStage= (Stage) entryUsername.getScene().getWindow();
+            cStage.setWidth(420);
+            cStage.setHeight(280);
+            entryUsername.getScene().setRoot(root);
+            
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     }
 
     @FXML
