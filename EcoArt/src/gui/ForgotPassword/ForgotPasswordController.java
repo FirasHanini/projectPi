@@ -82,8 +82,8 @@ public class ForgotPasswordController implements Initializable {
             controller.setUtilisateur(current);
             
             Stage cStage= (Stage) this.btnCancel.getScene().getWindow();
-            cStage.setWidth(720);
-            cStage.setHeight(520);
+            cStage.setWidth(420);
+            cStage.setHeight(300);
             btnCancel.getScene().setRoot(root);
             
             

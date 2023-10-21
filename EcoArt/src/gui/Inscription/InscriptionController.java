@@ -10,6 +10,7 @@ import Utilisateur.MailValidation;
 import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
+import gui.SignIn.SignInController;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.KeyEvent;
+
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 
@@ -41,7 +44,7 @@ import javax.swing.JFileChooser;
 public class InscriptionController implements Initializable {
 
     @FXML
-    private TextField entryName;
+    private TextField entryName ;
     @FXML
     private TextField entryLastName;
     @FXML
@@ -69,6 +72,7 @@ public class InscriptionController implements Initializable {
      */
     
     String picPath ;
+    int j;
     
     
     UtilisateurService service= UtilisateurService.getInstance();
@@ -76,6 +80,10 @@ public class InscriptionController implements Initializable {
     private Label mdpError;
     @FXML
     private ChoiceBox<String> typechoiceBox=new ChoiceBox<>();
+    @FXML
+    private Button cancel;
+    @FXML
+    private Label passowrdStrenght;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,6 +94,7 @@ public class InscriptionController implements Initializable {
 
     @FXML
     private void signUpBtn(ActionEvent event) {
+        mdpError.setText("");
         Utilisateur user= new Utilisateur();
         int i=0;
         
@@ -144,8 +153,11 @@ public class InscriptionController implements Initializable {
             i++;
         }
         
-      //  if(pic.length()==0)
-     //      pic="";
+       if(j==-2){
+           this.mdpError.setText("Your password is weak");
+           i++;
+       }
+               
         
             
         
@@ -214,11 +226,50 @@ public class InscriptionController implements Initializable {
         }
        
     }
+
+    @FXML
+    private void onCancel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../SignIn/SignIn.fxml"));
+            Parent root = loader.load();
+            SignInController ic=loader.getController();
+            Stage cStage= (Stage) this.cancel.getScene().getWindow();
+            cStage.setWidth(720);
+            cStage.setHeight(520);
+            cancel.getScene().setRoot(root);
+            
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+    }
+
+    @FXML
+    private void onPasswordOne(KeyEvent event) {
+        j=50;
+        String passwd =this.entryPasswordOne.getText();
+        switch (service.passwordStrength(passwd)){
+            case 0:{
+                this.passowrdStrenght.setText("Strong");
+                j=0;
+            }
+            break;
+            case -1:{
+                this.passowrdStrenght.setText("Medium");
+                j=-1;
+            }
+            break;
+            case -2:{
+                this.passowrdStrenght.setText("Weak");
+                j=-2;
+            }
+            break;
+        }
+        
+        
+    }
     
 }
-/*  String datN=entryBirthday.getValue().toString();
-        try {
-            entryAge.setText(this.service.calculeAge(datN));
-        } catch (ParseException ex) {
-            Logger.getLogger(InscriptionController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/

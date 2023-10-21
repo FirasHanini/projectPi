@@ -14,7 +14,12 @@
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="320.0" style="-fx-background-color: #566573;">
          <children>
-            <ImageView fitHeight="177.0" fitWidth="404.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="errorLabel" layoutX="30.0" layoutY="407.0" textFill="RED">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="157.0" fitWidth="285.0" layoutX="21.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../nnn.png" />
                </image>

@@ -329,7 +329,39 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         
     }
     
+         public int  passwordStrength(String password) {
         
+        if (password.length() < 8) {
+            return -2;
+        }
+
+        
+        boolean hasDigit = false;
+        boolean hasLower = false;
+        boolean hasUpper = false;
+        boolean hasSpecial = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLower = true;
+            } else if (Character.isUpperCase(c)) {
+                hasUpper = true;
+            } else {
+                hasSpecial = true;
+            }
+        }
+
+        // Évaluer la force du mot de passe en fonction des critères
+        if (hasDigit && hasLower && hasUpper && hasSpecial) {
+            return 0;
+        } else if (hasDigit && (hasLower || hasUpper)) {
+            return -1;
+        } else {
+            return -2;
+        }
+    }
         
         
     

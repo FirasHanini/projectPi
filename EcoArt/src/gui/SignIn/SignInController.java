@@ -6,8 +6,10 @@
 package gui.SignIn;
 
 import Utilisateur.MailValidation;
+import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
+import gui.Admin.AdminDashboardController;
 import gui.EspacePersonel.EspacePersonelController;
 import gui.ForgotPassword.ForgotPasswordController;
 import gui.Inscription.InscriptionController;
@@ -22,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -45,6 +48,8 @@ public class SignInController implements Initializable {
     private Hyperlink linkNewAccount;
     
     UtilisateurService service=UtilisateurService.getInstance();
+    @FXML
+    private Label errorLabel;
 
     /**
      * Initializes the controller class.
@@ -59,13 +64,51 @@ public class SignInController implements Initializable {
         
         String username=entryUsername.getText();
         String passwd = entryPassword.getText();
+        errorLabel.setText("");
         
-        if(service.login(username, passwd)==0){
+        
+            switch(service.login(username, passwd)){
+                case 0:
+                    {
             Utilisateur u = new Utilisateur();
             u.setUserName(username);
             Utilisateur current = service.chercher(u.getUserName());
             System.out.println(current);
             current.setPassword(passwd);
+            if(current.getType().equals(Type.ADMIN.name())){
+                
+                
+                try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Admin/AdminDashboard.fxml"));
+            Parent root = loader.load();
+            
+            
+             AdminDashboardController controller=loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) entryUsername.getScene().getWindow();
+            cStage.setWidth(920);
+            cStage.setHeight(420);
+              
+            entryUsername.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+                
+                
+                
+                
+                
+                
+            }else{
+                
+            
+            
+            
         
           try {
               
@@ -88,8 +131,33 @@ public class SignInController implements Initializable {
             System.out.println(ex.getMessage());
         }
         }
+            }
+                    break;
+                case -1:
+                {
+                    errorLabel.setText("Username not found !");
+                }
+                break;
+                case-2:{
+                    errorLabel.setText("Wrong password !");
+                }
+                    
+            }
+        
+        
+        
+        
+        
+        
     }
 
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void forgotPassword(ActionEvent event) {
         Utilisateur current = service.chercher(entryUsername.getText());
