@@ -163,6 +163,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             found.setEmail(rS.getString("email"));
             found.setType(Type.valueOf(rS.getString("type")));
             found.setUserName(rS.getString("username"));
+            found.setId(rS.getLong("id"));
             retour.add(found);
                 
             }

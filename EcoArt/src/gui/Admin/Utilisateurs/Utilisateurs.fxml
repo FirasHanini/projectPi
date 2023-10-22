@@ -37,13 +37,13 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="294.0" layoutY="122.0" prefHeight="212.0" prefWidth="566.0" style="-fx-background-color: transparent;">
+      <TableView fx:id="userTable" layoutX="241.0" layoutY="122.0" onMouseClicked="#onLigne" prefHeight="212.0" prefWidth="619.0" style="-fx-background-color: transparent;">
         <columns>
-            <TableColumn prefWidth="55.20001220703125" style="-fx-background-color: white;" text="ID" />
-          <TableColumn prefWidth="109.5999755859375" style="-fx-background-color: white;" text="Username" />
-            <TableColumn prefWidth="102.4000244140625" style="-fx-background-color: white;" text="Lastname" />
-          <TableColumn prefWidth="99.20004272460938" style="-fx-background-color: white;" text="Firstname" />
-            <TableColumn prefWidth="196.79996337890623" style="-fx-background-color: white;" text="Email" />
+            <TableColumn fx:id="idColumn" prefWidth="60.79998779296875" text="ID" />
+          <TableColumn fx:id="usernameColumn" prefWidth="110.39996337890625" text="Username" />
+            <TableColumn fx:id="lastnameColumn" prefWidth="113.60006713867188" text="Lastname" />
+          <TableColumn fx:id="firstnameColumn" prefWidth="123.199951171875" text="Type" />
+            <TableColumn fx:id="emailColumn" prefWidth="208.800048828125" text="Email" />
         </columns>
       </TableView>
       <TextField fx:id="searchEntry" layoutX="679.0" layoutY="35.0" onAction="#searched" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />

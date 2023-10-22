@@ -9,6 +9,7 @@ import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.Admin.AdminDashboardController;
+import gui.Admin.Utilisateurs.UtilisateursController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -64,17 +65,18 @@ public class PasswordInputController implements Initializable {
         String pass=current.getPassword();
         
         if(passwdInput.equals(pass)){
+            if(i==0||i==1){
             if(i==0){
             Utilisateur nouveau=found;
             nouveau.setType(Type.ADMIN);
             service.modifier(found, nouveau);
-            }else{
+            }else if(i==1){
             Utilisateur nouveau=found;
             nouveau.setType(Type.VISITEUR);
             service.modifier(found, nouveau);
             
         }
-             try {
+            try {
               
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../AdminDashboard.fxml"));
             Parent root = loader.load();
@@ -94,6 +96,31 @@ public class PasswordInputController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+            
+            }else if (i==2){
+                service.supprimer(found);
+                try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Utilisateurs/Utilisateurs.fxml"));
+            Parent root = loader.load();
+            
+            
+              UtilisateursController controller=loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) this.cancel.getScene().getWindow();
+           cStage.setWidth(920);
+            cStage.setHeight(425);
+              
+            cancel.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+            }
+             
             
             
             

@@ -108,6 +108,7 @@ public class AdminDashboardController implements Initializable {
 
     @FXML
     private void searched(ActionEvent event) {
+        errorLabel.setText("");
          Utilisateur found=null;
         String searched = this.searchEntry.getText();
       
@@ -121,10 +122,12 @@ public class AdminDashboardController implements Initializable {
             admins.add(found);
             this.setTable();
             
+            
         }else{
             admins.clear();
             admins.addAll(service.retournerAdmin());
             this.setTable();
+            
             
         }
         

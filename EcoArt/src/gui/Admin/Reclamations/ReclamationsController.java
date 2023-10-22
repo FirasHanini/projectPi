@@ -126,6 +126,7 @@ public class ReclamationsController implements Initializable {
 
     @FXML
     private void searched(ActionEvent event) {
+        errorLabel.setText(""); 
         List<Reclamation> found = new ArrayList<>();
         String searched = this.searchEntry.getText();
         found.addAll(service.retournerParUtilisateur(searched));
