@@ -8,6 +8,7 @@ package Reclamation;
 import Connection.MyConnection;
 import InterfaceCrud.MyCrud;
 import Utilisateur.Utilisateur;
+import Utilisateur.UtilisateurService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,6 +40,7 @@ public class ReclamationService implements MyCrud<Reclamation> {
         
         return instance;      
     }
+    UtilisateurService userService =UtilisateurService.getInstance();
 
     @Override
     public int ajouter(Reclamation t) {
@@ -101,6 +103,7 @@ public class ReclamationService implements MyCrud<Reclamation> {
     public List<Reclamation> retournerTout() {
         String req="SELECT * FROM `reclamation`";
         List<Reclamation> retour = new ArrayList();
+        Utilisateur temp=new Utilisateur();
         
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -109,6 +112,10 @@ public class ReclamationService implements MyCrud<Reclamation> {
             {
             Reclamation found= new Reclamation();
             found.setContenu(rS.getString("contenu"));
+            found.setId(rS.getLong("id"));
+            found.setEtat(State.valueOf(rS.getString("etat")));
+            temp.setId(rS.getLong("senderid"));
+            found.setSender(userService.chercher(temp));
          
             retour.add(found);
                 
@@ -144,6 +151,7 @@ public class ReclamationService implements MyCrud<Reclamation> {
       public List<Reclamation> retournerParUtilisateur( Utilisateur u) {
         String req="SELECT * FROM `reclamation` where senderid=?";
         List<Reclamation> retour = new ArrayList();
+        Utilisateur temp=new Utilisateur();
         
         try {
             
@@ -157,6 +165,8 @@ public class ReclamationService implements MyCrud<Reclamation> {
             found.setId(rS.getLong("id"));
             found.setEtat(State.valueOf(rS.getString("etat")));
             found.setReponse(rS.getString("reponse"));
+            temp.setId(rS.getLong("senderid"));
+            found.setSender(userService.chercher(temp));
          
             retour.add(found);
                 
@@ -167,6 +177,40 @@ public class ReclamationService implements MyCrud<Reclamation> {
         }
         return retour;
     }
+      
+      
+      public List<Reclamation> retournerParUtilisateur( String username) {
+        String req="SELECT * FROM reclamation r JOIN utilisateur u ON u.id = r.senderid WHERE u.username = ?;";
+        List<Reclamation> retour = new ArrayList();
+        Utilisateur temp=new Utilisateur();
+        
+        try {
+            
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            prepStat.setString(1, username);
+            ResultSet rS= prepStat.executeQuery();
+            while(rS.next())
+            {
+            Reclamation found= new Reclamation();
+            found.setContenu(rS.getString("contenu"));
+            found.setId(rS.getLong("id"));
+            found.setEtat(State.valueOf(rS.getString("etat")));
+            found.setReponse(rS.getString("reponse"));
+            temp.setId(rS.getLong("senderid"));
+            found.setSender(userService.chercher(temp));
+         
+            retour.add(found);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return retour;
+    }
+      
+      
+      
       
       
       public int repondreReclamation(Reclamation r, String reponse){

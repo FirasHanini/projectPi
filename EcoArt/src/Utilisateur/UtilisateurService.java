@@ -159,6 +159,9 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             found.setPrenom(rS.getString("Prenom"));
             found.setDateNaissance(rS.getString("date_naissance"));
             found.setAge(rS.getInt("age"));
+            found.setPic(rS.getString("pic"));
+            found.setEmail(rS.getString("email"));
+            found.setType(Type.valueOf(rS.getString("type")));
             found.setUserName(rS.getString("username"));
             retour.add(found);
                 
@@ -176,7 +179,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
        
             
             String req ="UPDATE `utilisateur` SET `cin` = ?, `nom` = ?, `prenom` = ?, "
-                    + "`date_naissance` = ?, `age` = ?, `pic` = ?, `username` = ?, `password` = ? WHERE `utilisateur`.`id` = ?;";
+                    + "`date_naissance` = ?, `age` = ?, `pic` = ?, `username` = ?, `password` = ?, "
+                    + "`type`= ? WHERE `utilisateur`.`id` = ?;";
         try {
             
             PreparedStatement prepStat = myConx.prepareStatement(req);
@@ -188,7 +192,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             prepStat.setString(6, n.getPic());
             prepStat.setString(7, n.getUserName());
             prepStat.setString(8, n.getPassword());
-            prepStat.setLong(9, u.getId());
+            prepStat.setString(9, n.getType());
+            prepStat.setLong(10, u.getId());
             int rowsAffected =  prepStat.executeUpdate();
            
             
@@ -227,6 +232,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             found.setUserName(rS.getString("username"));
             found.setType(Type.valueOf(rS.getString("type")));
             found.setPic(rS.getString("pic"));
+            found.setPassword(rS.getString("password"));
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -235,6 +241,50 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         
         return found;
     }
+    
+    
+    
+    
+    
+     public List<Utilisateur> retournerAdmin() {
+        List<Utilisateur> retour= new ArrayList();
+        String req ="select * from `utilisateur` where type like 'ADMIN' ";
+        
+        
+        try {
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            ResultSet rS= prepStat.executeQuery();
+            
+            while(rS.next())
+            {
+            Utilisateur found= new Utilisateur();
+             found.setId(rS.getLong("id"));
+            found.setCIN(rS.getString("cin"));
+            found.setNom(rS.getString("nom"));
+            found.setPrenom(rS.getString("Prenom"));
+            found.setDateNaissance(rS.getString("date_naissance"));
+            found.setAge(rS.getInt("age"));
+            found.setPic(rS.getString("pic"));
+            found.setEmail(rS.getString("email"));
+            found.setType(Type.valueOf(rS.getString("type")));
+            found.setUserName(rS.getString("username"));
+            retour.add(found);
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return retour;
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -353,7 +403,6 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
             }
         }
 
-        // Évaluer la force du mot de passe en fonction des critères
         if (hasDigit && hasLower && hasUpper && hasSpecial) {
             return 0;
         } else if (hasDigit && (hasLower || hasUpper)) {

@@ -5,9 +5,7 @@
  */
 package Utilisateur;
 
-import Reclamation.Reclamation;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
 /**
@@ -151,7 +149,7 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" + "CIN=" + CIN + ", nom=" + nom + ", prenom=" + prenom + ", DateNaissance=" + DateNaissance + ", age=" + age + ", pic=" + pic + ", email=" + email + ", userName=" + userName + ", type=" + type + '}';
+        return  "CIN=" + CIN + ", Lastname=" + nom + ", Firstname=" + prenom + ", Birthday=" + DateNaissance + ", Age=" + age + ",\n Email=" + email + ", Username=" + userName + ", type=" + type + '}';
     }
 
   

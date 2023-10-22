@@ -90,7 +90,7 @@ public class EspacePersonelController implements Initializable {
     entryImage.setImage(img);
 } else {
     // Charger une image par défaut si le chemin d'accès est vide
-    Image img = new Image("../../Images/R.jpg");
+    Image img = new Image("../Images/R.jpg");
     entryImage.setImage(img);
 }
         this.current=current;

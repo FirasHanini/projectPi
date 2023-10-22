@@ -32,7 +32,9 @@ public class FXMain extends Application {
            // Parent root = FXMLLoader.load(getClass().getResource("EspacePersonel/EspacePersonel.fxml"));
             
             Scene scene = new Scene(root);
+            // Chargez le fichier CSS
             
+
             primaryStage.setTitle("EcoArt");
             primaryStage.setScene(scene);
             primaryStage.show();

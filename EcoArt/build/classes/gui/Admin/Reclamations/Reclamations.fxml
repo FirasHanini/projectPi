@@ -37,11 +37,12 @@
             </Button>
          </children>
       </VBox>
-      <TableView layoutX="294.0" layoutY="122.0" prefHeight="212.0" prefWidth="436.0" style="-fx-background-color: transparent;">
+      <TableView fx:id="reclamationTable" layoutX="228.0" layoutY="125.0" onMouseClicked="#onLigne" prefHeight="212.0" prefWidth="657.0" style="-fx-background-color: transparent;">
         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="73.60003662109375" style="-fx-background-color: white;" text="ID" />
-          <TableColumn fx:id="senderIdColumn" prefWidth="161.60006713867188" style="-fx-background-color: white;" text="senderId" />
-            <TableColumn fx:id="StateColumn" prefWidth="200.0" style="-fx-background-color: white;" text="State" />
+            <TableColumn fx:id="idColumn" prefWidth="73.60003662109375" text="ID" />
+          <TableColumn fx:id="senderIdColumn" prefWidth="161.60006713867188" text="SenderId" />
+            <TableColumn fx:id="senderUsername" prefWidth="194.39999389648438" text="Username" />
+            <TableColumn fx:id="StateColumn" prefWidth="224.0" text="State" />
         </columns>
       </TableView>
       <TextField fx:id="searchEntry" layoutX="679.0" layoutY="35.0" onAction="#searched" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" />

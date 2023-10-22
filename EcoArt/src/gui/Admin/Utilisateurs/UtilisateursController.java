@@ -63,8 +63,8 @@ public class UtilisateursController implements Initializable {
               controller.setUtilisateur(current);
               
             Stage cStage= (Stage) this.adminsButton.getScene().getWindow();
-            cStage.setWidth(710);
-            cStage.setHeight(740);
+            cStage.setWidth(920);
+            cStage.setHeight(425);
               
             adminsButton.getScene().setRoot(root);
             
@@ -88,7 +88,7 @@ public class UtilisateursController implements Initializable {
         
          try {
               
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Reclamations/Reclamations.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Reclamations/Reclamations.fxml"));
             Parent root = loader.load();
             
             
@@ -96,8 +96,8 @@ public class UtilisateursController implements Initializable {
               controllerReclam.setUtilisateur(current);
               
             Stage cStage= (Stage) this.adminsButton.getScene().getWindow();
-            cStage.setWidth(710);
-            cStage.setHeight(740);
+            cStage.setWidth(920);
+            cStage.setHeight(425);
               
             adminsButton.getScene().setRoot(root);
             

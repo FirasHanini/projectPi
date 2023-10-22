@@ -89,7 +89,7 @@ public class SignInController implements Initializable {
               
             Stage cStage= (Stage) entryUsername.getScene().getWindow();
             cStage.setWidth(920);
-            cStage.setHeight(420);
+            cStage.setHeight(425);
               
             entryUsername.getScene().setRoot(root);
             

@@ -80,6 +80,14 @@ public class Reclamation {
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
+    
+    public Long getSenderId(){
+       return  this.sender.getId();
+    }
+    public String getSenderUsername(){
+        return this.sender.getUserName();
+    }
+    
 
     @Override
     public String toString() {

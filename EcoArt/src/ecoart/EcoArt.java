@@ -57,9 +57,12 @@ public class EcoArt {
         service.repondreReclamation(rec, "reponse");
      */
         
-        MailValidation.sendVerificationCode("firashanini@outlook.fr", MailValidation.generateVerificationCode());
+      //  MailValidation.sendVerificationCode("firashanini@outlook.fr", MailValidation.generateVerificationCode());
         
+        System.out.println("sdsdsd");
         
+        UtilisateurService serviceu =UtilisateurService.getInstance();
+        System.out.println(serviceu.retournerAdmin());
     }
     
 }
