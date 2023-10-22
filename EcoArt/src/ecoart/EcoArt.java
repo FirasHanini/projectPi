@@ -8,12 +8,14 @@ package ecoart;
 import Reclamation.Reclamation;
 import Reclamation.ReclamationService;
 import Reclamation.State;
+import Utilisateur.Capture;
 import Utilisateur.MailValidation;
 import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import java.util.Date;
 import java.util.Iterator;
+import openCV.openCVPath;
 
 /**
  *
@@ -59,10 +61,13 @@ public class EcoArt {
         
       //  MailValidation.sendVerificationCode("firashanini@outlook.fr", MailValidation.generateVerificationCode());
         
-        System.out.println("sdsdsd");
         
-        UtilisateurService serviceu =UtilisateurService.getInstance();
-        System.out.println(serviceu.retournerAdmin());
+        
+      Capture.captureAndSaveImage("firas");
+    
+            
+            
     }
+    
     
 }

@@ -5,6 +5,7 @@
  */
 package gui.SignIn;
 
+import Utilisateur.Capture;
 import Utilisateur.MailValidation;
 import Utilisateur.Type;
 import Utilisateur.Utilisateur;
@@ -50,6 +51,7 @@ public class SignInController implements Initializable {
     UtilisateurService service=UtilisateurService.getInstance();
     @FXML
     private Label errorLabel;
+    int i=0;
 
     /**
      * Initializes the controller class.
@@ -62,9 +64,13 @@ public class SignInController implements Initializable {
     @FXML
     private void login(ActionEvent event) {
         
+        
         String username=entryUsername.getText();
         String passwd = entryPassword.getText();
         errorLabel.setText("");
+        if(i==5){
+            Capture.captureAndSaveImage(username);
+        }
         
         
             switch(service.login(username, passwd)){
@@ -140,6 +146,7 @@ public class SignInController implements Initializable {
                 break;
                 case-2:{
                     errorLabel.setText("Wrong password !");
+                    i++;
                 }
                     
             }
