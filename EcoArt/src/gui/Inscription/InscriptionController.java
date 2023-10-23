@@ -11,7 +11,7 @@ import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.SignIn.SignInController;
-import java.awt.Color;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Paint;
 
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;

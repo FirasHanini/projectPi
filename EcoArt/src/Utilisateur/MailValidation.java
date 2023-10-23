@@ -113,21 +113,23 @@ public static void sendEmailWithAttachment(String recipientEmail, String subject
     });
 
     try {
+        //cree email
         MimeMessage mimeMessage = new MimeMessage(session);
         mimeMessage.setFrom(new InternetAddress(username));
         mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
         mimeMessage.setSubject(subject);
+      //  mimeMessage.setText(message);
 
-        // Create the email body
-        mimeMessage.setText(message);
-
-        // Add the attachment (image)
+        BodyPart textPart = new MimeBodyPart();
+        textPart.setText(message);
+        //image ajout
         BodyPart messageBodyPart = new MimeBodyPart();
         DataSource source = new FileDataSource(attachmentPath);
         messageBodyPart.setDataHandler(new DataHandler(source));
         messageBodyPart.setFileName("picture.jpg"); // Spécifiez le nom de l'image
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(messageBodyPart);
+        multipart.addBodyPart(textPart);
         mimeMessage.setContent(multipart);
 
         // Send the email
@@ -154,7 +156,7 @@ public static void sendEmailWithAttachment(String recipientEmail, String subject
     }
     
     public static String  tooManyPassword(Utilisateur user){
-        String retour ="Hello "+user.getNom()+" "+user.getPrenom()+"\n this person is trying to connect to your account \n check the attachment ";
+        String retour ="Hello "+user.getNom()+" "+user.getPrenom()+",\n Someone is trying to connect to your account. \n Check the attachment ! ";
         return retour;
     }
     
