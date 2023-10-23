@@ -181,7 +181,7 @@ public class InscriptionController implements Initializable {
             
         String code = MailValidation.generateVerificationCode();
         String message=MailValidation.newAccountEmailVerif(nouveau, code);
-         MailValidation.sendVerificationCode(email,message); 
+         MailValidation.sendVerificationCode(email,"Inscription Code",message); 
         
         
         try {

@@ -9,13 +9,18 @@ package Utilisateur;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -23,17 +28,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailValidation {
     
-    /*
-    public static boolean isValidEmail(String email) {
-        try {
-            InternetAddress internetAddress = new InternetAddress(email);
-            internetAddress.validate();
-            return true;
-        } catch (AddressException ex) {
-            return false;
-        }
-    }
-*/
+
     
     public static String generateVerificationCode() {
         Date date = new Date();
@@ -68,41 +63,79 @@ public class MailValidation {
     
     
     
-   
-    public static void sendVerificationCode(String recipientEmail, String email) {
-        
-        String host = "smtp.gmail.com";
-        String username = "ecoartteampi@gmail.com";
-        String password = "hoxb htnf agqp blhk"; 
+   public static Properties createSmtpProperties() {
+    Properties properties = new Properties();
+    properties.put("mail.smtp.host", "smtp.gmail.com");
+    properties.put("mail.smtp.auth", "true");
+    properties.put("mail.smtp.port", "587");
+    properties.put("mail.smtp.starttls.enable", "true");
+    return properties;
+}
 
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.starttls.enable", "true");
 
-        Session session = Session.getDefaultInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        });
 
-        try {
-            // Créer un message e-mail
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
-            message.setSubject("Code de vérification");
+public static void sendVerificationCode(String recipientEmail, String subject, String message) {
+    String host = "smtp.gmail.com";
+    String username = "ecoartteampi@gmail.com";
+    String password = "hoxb htnf agqp blhk";
+    
+    Properties properties = createSmtpProperties();
 
-            
-            message.setText( email);
-
-            
-            Transport.send(message);
-        } catch (MessagingException ex) {
-            ex.printStackTrace();
+    Session session = Session.getDefaultInstance(properties, new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
         }
+    });
+
+    try {
+        MimeMessage mimeMessage = new MimeMessage(session);
+        mimeMessage.setFrom(new InternetAddress(username));
+        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+        mimeMessage.setSubject(subject);
+        mimeMessage.setText(message);
+        Transport.send(mimeMessage);
+    } catch (MessagingException ex) {
+        System.out.println(ex.getMessage());
     }
+}
+
+public static void sendEmailWithAttachment(String recipientEmail, String subject, String message, String attachmentPath) {
+    String host = "smtp.gmail.com";
+    String username = "ecoartteampi@gmail.com";
+    String password = "hoxb htnf agqp blhk";
+    
+    Properties properties = createSmtpProperties();
+
+    Session session = Session.getDefaultInstance(properties, new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+        }
+    });
+
+    try {
+        MimeMessage mimeMessage = new MimeMessage(session);
+        mimeMessage.setFrom(new InternetAddress(username));
+        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
+        mimeMessage.setSubject(subject);
+
+        // Create the email body
+        mimeMessage.setText(message);
+
+        // Add the attachment (image)
+        BodyPart messageBodyPart = new MimeBodyPart();
+        DataSource source = new FileDataSource(attachmentPath);
+        messageBodyPart.setDataHandler(new DataHandler(source));
+        messageBodyPart.setFileName("picture.jpg"); // Spécifiez le nom de l'image
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(messageBodyPart);
+        mimeMessage.setContent(multipart);
+
+        // Send the email
+        Transport.send(mimeMessage);
+    } catch (MessagingException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
     
     
     public static String newAccountEmailVerif(Utilisateur nouveau,String code){
@@ -117,6 +150,11 @@ public class MailValidation {
         
         String retour="Hello "+nouveau.getNom()+" "+nouveau.getPrenom()+"\n Your verification code is:  "+code +"\n Copy and paste this code so "
                 + "you can change your password";
+        return retour;
+    }
+    
+    public static String  tooManyPassword(Utilisateur user){
+        String retour ="Hello "+user.getNom()+" "+user.getPrenom()+"\n this person is trying to connect to your account \n check the attachment ";
         return retour;
     }
     

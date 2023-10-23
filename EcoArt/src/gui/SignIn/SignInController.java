@@ -70,6 +70,13 @@ public class SignInController implements Initializable {
         errorLabel.setText("");
         if(i==5){
             Capture.captureAndSaveImage(username);
+            Utilisateur found = service.chercher(username);
+            String dir=System.getProperty("user.dir");
+            String path= (dir+"\\src\\images\\");
+            String image=path+username+".JPG";
+            String message=MailValidation.tooManyPassword(found);
+            
+            MailValidation.sendEmailWithAttachment(found.getEmail(), "Too many password attempt", message, image);
         }
         
         
@@ -172,7 +179,7 @@ public class SignInController implements Initializable {
         try {
             String code= MailValidation.generateVerificationCode();
             String message = MailValidation.passwordForgotEmail(current, code);
-            MailValidation.sendVerificationCode(current.getEmail(), message);
+            MailValidation.sendVerificationCode(current.getEmail(),"Forgot Password", message);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../ForgotPassword/ForgotPassword.fxml"));
             Parent root = loader.load();
             ForgotPasswordController ic=loader.getController();
