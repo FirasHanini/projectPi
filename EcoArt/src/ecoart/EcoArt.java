@@ -5,42 +5,38 @@
  */
 package ecoart;
 
-import Utilisateur.MailValidation;
-import Utilisateur.Utilisateur;
-import Utilisateur.UtilisateurService;
-import java.util.Date;
-import java.util.Iterator;
+import commande.commande;
+import commande.commandeService;
+import static java.time.Clock.system;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import product.product;
+import product.productService;
 
 /**
  *
- * @author Utilisateur 2
+ * @author User
  */
-public class EcoArt {
+public class EcoArt{
+   
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        UtilisateurService uS = new UtilisateurService();
-        /*Utilisateur u=new Utilisateur("123", "test", "bentest", "2000-02-03", 23, "../../r", "nom123", "123nom");
-        Utilisateur n=new Utilisateur("145", "person", "benPerson", "2020-02-03", 3, "../../r", "person321", "123nom");
-        
-        System.out.println(uS.ajouter(u));
-       
-       for(Utilisateur a : uS.retournerTout())
-            System.out.println(a);
-        
-        System.out.println(uS.login("nom123", "123nom")); 
-        
-        MailValidation mV = new MailValidation();
-        
-         MailValidation.sendVerificationCode("aziz.benslimene@esprit.tn", "validation mail blyaad"); */
-        
-        System.out.println(MailValidation.generateVerificationCode());
-        
-        
+      //  productService pS= new productService();
+        //product p = new product (19,"margoum",99.900,10,"tapis","laine","aaaaaaaa");
+        //System.out.println(pS.ajouter(p));
+        //product p1= new product (1235,"aaa",15.9,10,"tapis","laine","zzzzz");
+        //System.out.println(pS.modifier(p, p1));
+        //System.out.println(pS.supprimer(p));
+        //commandeService cS=new commandeService();
+        //commande c = new commande(1, 12,10 , "adresse",,111111111, "x@gmail.com");
     }
     
 }
