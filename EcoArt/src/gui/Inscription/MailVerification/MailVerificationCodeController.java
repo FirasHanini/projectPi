@@ -69,14 +69,14 @@ public class MailVerificationCodeController implements Initializable {
             
             //////////////////////////////////////Naviguation/////////////////////////////////
            
-            
+            Utilisateur nouveau = service.chercher(current.getUserName());
         
           try {
               
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../EspacePersonel/EspacePersonel.fxml"));
             Parent root = loader.load();
               EspacePersonelController controller=loader.getController();
-              controller.setter(current,0);
+              controller.setter(nouveau,0);
               
             Stage cStage= (Stage) codeVerif.getScene().getWindow();
             cStage.setWidth(710);

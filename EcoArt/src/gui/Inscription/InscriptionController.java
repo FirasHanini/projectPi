@@ -158,7 +158,12 @@ public class InscriptionController implements Initializable {
            this.mdpError.setText("Your password is weak");
            i++;
        }
-               
+       
+       if(pic==null){
+           String dir=System.getProperty("user.dir");
+           pic=dir+"\\src\\images\\R.jpg";
+       }
+           
         
             
         
@@ -213,6 +218,7 @@ public class InscriptionController implements Initializable {
         File f=chooser.getSelectedFile();
          picPath= f.getAbsolutePath();
         
+         
         
         
     }

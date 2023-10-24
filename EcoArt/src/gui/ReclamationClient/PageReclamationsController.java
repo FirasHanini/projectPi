@@ -131,6 +131,7 @@ public class PageReclamationsController implements Initializable {
     
     public void setUtilisateur(Utilisateur current){
         this.current=current;
+        System.out.println(this.current.getId());
         List<Reclamation> reclamations=new ArrayList<>();
         reclamations.addAll(service.retournerParUtilisateur(current));
         

@@ -52,7 +52,7 @@ public class ReclamationClientController implements Initializable {
         String contenu = entryContenu.getText();
         sent.setContenu(contenu);
         sent.setEtat(State.WAITING);
-        System.out.println(sender);
+        System.out.println(sender.getId());
         
         sent.setSender(sender);
         System.out.println(sent);

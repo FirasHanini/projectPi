@@ -74,8 +74,11 @@ public class DeleteController implements Initializable {
 
     @FXML
     private void onConfirm(ActionEvent event) {
+        
         String pass = entryPassword.getText();
-        if(pass==current.getPassword()){
+        System.out.println(pass+" "+current.getPassword());
+        
+        if(pass.equals(current.getPassword())){
             serviceReclamation.supprimerParSender(current);
             service.supprimer(current);
             
