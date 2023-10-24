@@ -5,69 +5,38 @@
  */
 package ecoart;
 
-import Reclamation.Reclamation;
-import Reclamation.ReclamationService;
-import Reclamation.State;
-import Utilisateur.Capture;
-import Utilisateur.MailValidation;
-import Utilisateur.Type;
-import Utilisateur.Utilisateur;
-import Utilisateur.UtilisateurService;
-import java.util.Date;
-import java.util.Iterator;
-import openCV.openCVPath;
+import commande.commande;
+import commande.commandeService;
+import static java.time.Clock.system;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import product.product;
+import product.productService;
 
 /**
  *
- * @author Utilisateur 2
+ * @author User
  */
-public class EcoArt {
+public class EcoArt{
+   
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        
-        
-        UtilisateurService ss=UtilisateurService.getInstance();
-        Utilisateur u = new Utilisateur();
-        u.setEmail("firashanini@gmail.com");
-        u.setType(Type.FORMATEUR);
-        u.setCIN("11400929");
-        u.setNom("ff");
-        u.setPrenom("ff");
-        u.setDateNaissance("1997-05-20");
-        u.setPic("54645646");
-        u.setUserName("sqfqsdfqs");
-        u.setPassword("sqfqsdfqs");
-        
-        /*ss.ajouter(u);
-        
-        System.out.println(ss.chercher("sqfqsdfqs"));
-        
-        
-        ReclamationService service = ReclamationService.getInstance();
-        Reclamation rec = new Reclamation();
-        rec.setContenu("test");
-        rec.setEtat(State.WAITING);
-        rec.setSender(u);
-        rec.setId(3);
-        //service.supprimer(rec);
-        System.out.println(service.chercher(rec));
-        service.repondreReclamation(rec, "reponse");
-     */
-        
-      //  MailValidation.sendVerificationCode("firashanini@outlook.fr", MailValidation.generateVerificationCode());
-        
-        
-        
-    //  Capture.captureAndSaveImage("firas");
-   // MailValidation.sendEmailWithAttachment("firas.hanini@esprit.tn", "pic", "pic zeda trah", "C:\\Users\\Utilisateur 2\\Desktop\\project PI\\projectPi\\EcoArt\\src\\images\\firas.JPG");
-     MailValidation.sendVerificationCode("firas.hanini@esprit.tn", "test", "message blyad");
-            
+      //  productService pS= new productService();
+        //product p = new product (19,"margoum",99.900,10,"tapis","laine","aaaaaaaa");
+        //System.out.println(pS.ajouter(p));
+        //product p1= new product (1235,"aaa",15.9,10,"tapis","laine","zzzzz");
+        //System.out.println(pS.modifier(p, p1));
+        //System.out.println(pS.supprimer(p));
+        //commandeService cS=new commandeService();
+        //commande c = new commande(1, 12,10 , "adresse",,111111111, "x@gmail.com");
     }
-    
     
 }
