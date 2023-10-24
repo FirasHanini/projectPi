@@ -12,6 +12,7 @@ import gui.Admin.AddAdmin.AddAdminController;
 import gui.Admin.AddAdmin.PasswordInputController;
 import gui.Admin.Reclamations.ReclamationsController;
 import gui.Admin.Utilisateurs.UtilisateursController;
+import gui.EspacePersonel.EspacePersonelController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +26,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -69,6 +71,8 @@ public class AdminDashboardController implements Initializable {
     
     UtilisateurService service=UtilisateurService.getInstance();
      List <Utilisateur> admins=new ArrayList<>();;
+    @FXML
+    private Hyperlink profilHyper;
 
     /**
      * Initializes the controller class.
@@ -246,6 +250,31 @@ public class AdminDashboardController implements Initializable {
         this.tableAdmin.setItems(FXCollections.observableArrayList(admins));
           
       }
+
+    @FXML
+    private void onProfil(ActionEvent event) {
+        
+        try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EspacePersonel/EspacePersonel.fxml"));
+            Parent root = loader.load();
+            
+            
+              EspacePersonelController controller=loader.getController();
+              controller.setter(current,1);
+              
+            Stage cStage= (Stage) this.addAdmin.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
+              
+            addAdmin.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
    
     
 }

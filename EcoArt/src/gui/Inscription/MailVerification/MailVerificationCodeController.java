@@ -76,7 +76,7 @@ public class MailVerificationCodeController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../EspacePersonel/EspacePersonel.fxml"));
             Parent root = loader.load();
               EspacePersonelController controller=loader.getController();
-              controller.setter(current);
+              controller.setter(current,0);
               
             Stage cStage= (Stage) codeVerif.getScene().getWindow();
             cStage.setWidth(710);

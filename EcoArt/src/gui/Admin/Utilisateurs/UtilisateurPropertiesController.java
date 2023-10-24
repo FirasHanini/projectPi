@@ -8,6 +8,7 @@ package gui.Admin.Utilisateurs;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.Admin.AddAdmin.PasswordInputController;
+import gui.homePage.HomPageController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,16 +55,20 @@ public class UtilisateurPropertiesController implements Initializable {
     Utilisateur current ;
     Utilisateur selected ;
     UtilisateurService service = UtilisateurService.getInstance();
+    int i;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
     }    
 
 
+    
+    
     @FXML
     private void onDelete(ActionEvent event) {
         try {
@@ -96,6 +101,7 @@ public class UtilisateurPropertiesController implements Initializable {
     
     @FXML
     private void onBack(ActionEvent event) {
+        if(i==0){
         try {
               
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Utilisateurs.fxml"));
@@ -116,9 +122,37 @@ public class UtilisateurPropertiesController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        }else {
+            try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../homePage/hompage.fxml"));
+            Parent root = loader.load();
+            
+            
+              HomPageController controller=loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) this.ageLabel.getScene().getWindow();
+           cStage.setWidth(600);
+            cStage.setHeight(500);
+              
+            ageLabel.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        }
+            
     }
     
-    public void setter (Utilisateur current, Utilisateur selected){
+    public void setter (Utilisateur current, Utilisateur selected,int i){
+        this.i=i;
+        if(i==1)
+            this.btnDelete.setVisible(false);
+        
+        
         this.current=current;
         this.selected=selected;
         this.ageLabel.setText(String.valueOf(selected.getAge()));

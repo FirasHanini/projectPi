@@ -14,6 +14,7 @@ import gui.Admin.AdminDashboardController;
 import gui.EspacePersonel.EspacePersonelController;
 import gui.ForgotPassword.ForgotPasswordController;
 import gui.Inscription.InscriptionController;
+import gui.homePage.HomPageController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -119,22 +120,18 @@ public class SignInController implements Initializable {
                 
             }else{
                 
-            
-            
-            
-        
-          try {
+                 try {
               
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EspacePersonel/EspacePersonel.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../homePage/homPage.fxml"));
             Parent root = loader.load();
             
             
-              EspacePersonelController controller=loader.getController();
-              controller.setter(current);
+              HomPageController controller=loader.getController();
+              controller.setUtilisateur(current);
               
             Stage cStage= (Stage) entryUsername.getScene().getWindow();
-            cStage.setWidth(710);
-            cStage.setHeight(740);
+            cStage.setWidth(600);
+            cStage.setHeight(500);
               
             entryUsername.getScene().setRoot(root);
             
@@ -143,6 +140,11 @@ public class SignInController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+            
+            
+            
+        /*
+       */
         }
             }
                     break;

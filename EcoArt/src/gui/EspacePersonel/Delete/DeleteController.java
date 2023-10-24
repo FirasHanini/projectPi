@@ -5,9 +5,11 @@
  */
 package gui.EspacePersonel.Delete;
 
+import Reclamation.ReclamationService;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
 import gui.EspacePersonel.EspacePersonelController;
+import gui.SignIn.SignInController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +40,7 @@ public class DeleteController implements Initializable {
     
     Utilisateur current; 
     UtilisateurService service= UtilisateurService.getInstance();
+    ReclamationService serviceReclamation = ReclamationService.getInstance();
     @FXML
     private Label errorLabel;
 
@@ -57,7 +60,7 @@ public class DeleteController implements Initializable {
             
             
             EspacePersonelController controller=loader.getController();
-            controller.setter(current);
+            controller.setter(current,0);
             
             Stage cStage= (Stage) entryPassword.getScene().getWindow();
             cStage.setWidth(710);
@@ -72,8 +75,33 @@ public class DeleteController implements Initializable {
     @FXML
     private void onConfirm(ActionEvent event) {
         String pass = entryPassword.getText();
-        if(pass==current.getPassword())
+        if(pass==current.getPassword()){
+            serviceReclamation.supprimerParSender(current);
             service.supprimer(current);
+            
+            try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../SignIn/SignIn.fxml"));
+            Parent root = loader.load();
+            
+            
+             SignInController controller=loader.getController();
+              
+              
+            Stage cStage= (Stage) this.btnCancel.getScene().getWindow();
+            cStage.setWidth(720);
+            cStage.setHeight(520);
+              
+            btnCancel.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+            
+            
+        }
         else 
             errorLabel.setText("Wrong password try again !");
        

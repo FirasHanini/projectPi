@@ -5,6 +5,7 @@
  */
 package gui.Admin.AddAdmin;
 
+import Reclamation.ReclamationService;
 import Utilisateur.Type;
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
@@ -40,6 +41,7 @@ public class PasswordInputController implements Initializable {
     Utilisateur found;
     int i;
     UtilisateurService service = UtilisateurService.getInstance();
+    ReclamationService serviceReclmation=ReclamationService.getInstance();
     @FXML
     private PasswordField inputpassw;
 
@@ -98,7 +100,9 @@ public class PasswordInputController implements Initializable {
         }
             
             }else if (i==2){
+                serviceReclmation.supprimerParSender(found);
                 service.supprimer(found);
+                
                 try {
               
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../Utilisateurs/Utilisateurs.fxml"));

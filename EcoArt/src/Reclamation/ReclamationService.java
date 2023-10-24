@@ -98,6 +98,22 @@ public class ReclamationService implements MyCrud<Reclamation> {
         
         return 0;
     }
+     
+    public int supprimerParSender(Utilisateur sender) {
+        if(this.retournerParUtilisateur(sender)==null)
+            return -1;
+        String req=" DELETE FROM reclamation WHERE `reclamation`.`senderid` = ?;";
+        
+        try {
+            PreparedStatement prepStat = myConx.prepareStatement(req);
+            prepStat.setFloat(1, sender.getId());
+            int rowsAffected =  prepStat.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return 0;
+    }
 
     @Override
     public List<Reclamation> retournerTout() {

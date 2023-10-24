@@ -53,7 +53,7 @@ public class UpdatePasswordController implements Initializable {
             
             
             EspacePersonelController controller=loader.getController();
-            controller.setter(current);
+            controller.setter(current,0);
             
             Stage cStage= (Stage) entryPassword.getScene().getWindow();
             cStage.setWidth(710);

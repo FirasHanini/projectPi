@@ -60,7 +60,7 @@ public class NewPasswordInputController implements Initializable {
             
             
             EspacePersonelController controller=loader.getController();
-            controller.setter(current);
+            controller.setter(current,0);
             
             Stage cStage= (Stage) this.cancel.getScene().getWindow();
             cStage.setWidth(710);
@@ -92,7 +92,7 @@ public class NewPasswordInputController implements Initializable {
             
             
             EspacePersonelController controller=loader.getController();
-            controller.setter(nouveau);
+            controller.setter(nouveau,0);
             
             Stage cStage= (Stage) this.cancel.getScene().getWindow();
             cStage.setWidth(710);

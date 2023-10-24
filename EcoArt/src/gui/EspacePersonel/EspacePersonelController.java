@@ -6,9 +6,11 @@
 package gui.EspacePersonel;
 
 import Utilisateur.Utilisateur;
+import gui.Admin.AdminDashboardController;
 import gui.EspacePersonel.Delete.DeleteController;
 import gui.EspacePersonel.Update.UpdateController;
-import gui.ReclamationClient.PageReclamationsController;
+
+import gui.homePage.HomPageController;
 import java.io.IOException;
 
 
@@ -64,13 +66,18 @@ public class EspacePersonelController implements Initializable {
     private Label typeLabel;
     @FXML
     private Button rec;
+    int i;
 
     /**
      * Initializes the controller class.
      */
     
     
-    public void setter (Utilisateur current){
+    public void setter (Utilisateur current , int i){
+        
+        this.i=i;
+        
+        
         this.ageLabel.setText(String.valueOf(current.getAge()));
         this.birthdayLabel.setText(current.getDateNaissance());
         this.cinLabel.setText(current.getCIN());
@@ -108,6 +115,7 @@ public class EspacePersonelController implements Initializable {
     @FXML
     private void onUpdate(ActionEvent event) {
         
+        
          try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Update/Update.fxml"));
             Parent root = loader.load();
@@ -125,6 +133,8 @@ public class EspacePersonelController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        
+            
         
         
       
@@ -155,21 +165,48 @@ public class EspacePersonelController implements Initializable {
 
     @FXML
     private void onRec(ActionEvent event) {
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ReclamationClient/PageReclamations.fxml"));
+        if(i==0){ 
+        try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../homePage/hompage.fxml"));
             Parent root = loader.load();
             
             
-             PageReclamationsController controller=loader.getController();
-            controller.setUtilisateur(current);
-            
-            Stage cStage= (Stage) ageLabel.getScene().getWindow();
-            cStage.setWidth(620);
-            cStage.setHeight(550);
+              HomPageController controller=loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) this.ageLabel.getScene().getWindow();
+           cStage.setWidth(600);
+            cStage.setHeight(500);
               
             ageLabel.getScene().setRoot(root);
+            
+              
+            
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
+        }
+         }else{
+             try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Admin/AdminDashboard.fxml"));
+            Parent root = loader.load();
+            
+            
+              AdminDashboardController controller =loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) this.ageLabel.getScene().getWindow();
+            cStage.setWidth(920);
+            cStage.setHeight(425);
+              
+            ageLabel.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         }
         
         

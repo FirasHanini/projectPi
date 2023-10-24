@@ -169,7 +169,7 @@ public class UtilisateursController implements Initializable {
             
             
               UtilisateurPropertiesController controllerUtilisateur =loader.getController();
-              controllerUtilisateur.setter(current,selected);
+              controllerUtilisateur.setter(current,selected,0);
               
             Stage cStage= (Stage) this.adminsButton.getScene().getWindow();
             cStage.setWidth(720);

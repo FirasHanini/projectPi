@@ -84,15 +84,18 @@ public class Reclamation {
     public Long getSenderId(){
        return  this.sender.getId();
     }
+    
     public String getSenderUsername(){
         return this.sender.getUserName();
     }
-    
 
     @Override
     public String toString() {
-        return "Reclamation{" + "contenu=" + contenu + ", etat=" + etat + ", reponse=" + reponse + '}';
+        return "Reclamation{" + "contenu=" + contenu + ", etat=" + etat + ", reponse=" + reponse + ", sender=" + sender + '}';
     }
+    
+
+   
 
    
     

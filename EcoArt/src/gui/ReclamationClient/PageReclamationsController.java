@@ -11,6 +11,7 @@ import Reclamation.State;
 import Utilisateur.Utilisateur;
 import gui.ReclamationClient.ReclamationAjout.ReclamationClientController;
 import gui.ReclamationClient.ReclamationReponse.ReclamationReponseController;
+import gui.homePage.HomPageController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -85,6 +86,26 @@ public class PageReclamationsController implements Initializable {
 
     @FXML
     private void onBack(ActionEvent event) {
+           try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../homePage/hompage.fxml"));
+            Parent root = loader.load();
+            
+            
+              HomPageController controller=loader.getController();
+              controller.setUtilisateur(current);
+              
+            Stage cStage= (Stage) this.addReclamation.getScene().getWindow();
+           cStage.setWidth(600);
+            cStage.setHeight(500);
+              
+            addReclamation.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML

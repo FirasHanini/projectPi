@@ -27,7 +27,10 @@
                   <Image url="@../../../../../nnn.png" />
                </image>
             </ImageView>
-            <Button fx:id="rec" layoutX="83.0" layoutY="628.0" mnemonicParsing="false" onAction="#onRec" prefHeight="26.0" prefWidth="90.0" text="Reclamation" />
+            <Button fx:id="rec" layoutX="82.0" layoutY="614.0" mnemonicParsing="false" onAction="#onRec" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <Label fx:id="usernameLabel" layoutX="334.0" layoutY="50.0" prefHeight="18.0" prefWidth="337.0" text="Label" textAlignment="CENTER">

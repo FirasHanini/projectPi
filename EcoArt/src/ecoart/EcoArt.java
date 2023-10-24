@@ -65,8 +65,9 @@ public class EcoArt {
         
     //  Capture.captureAndSaveImage("firas");
    // MailValidation.sendEmailWithAttachment("firas.hanini@esprit.tn", "pic", "pic zeda trah", "C:\\Users\\Utilisateur 2\\Desktop\\project PI\\projectPi\\EcoArt\\src\\images\\firas.JPG");
-     MailValidation.sendVerificationCode("firas.hanini@esprit.tn", "test", "message blyad");
-            
+   //  MailValidation.sendVerificationCode("firas.hanini@esprit.tn", "test", "message blyad");
+   
+   
     }
     
     

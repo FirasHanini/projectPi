@@ -186,7 +186,7 @@ public class UpdateController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../EspacePersonel/EspacePersonel.fxml"));
             Parent root = loader.load();
               EspacePersonelController controller=loader.getController();
-              controller.setter(nouveau);
+              controller.setter(nouveau,0);
               
             Stage cStage= (Stage) nameLabel.getScene().getWindow();
             cStage.setWidth(710);

@@ -7,6 +7,7 @@ package Utilisateur;
 
 import Connection.MyConnection;
 import InterfaceCrud.MyCrud;
+import Reclamation.ReclamationService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +30,8 @@ import java.util.List;
  */
 public class UtilisateurService implements MyCrud<Utilisateur> {
 
+    
+    
     private UtilisateurService() {
     }
     
@@ -40,6 +43,8 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
         
         return instance;
     }
+    
+    
     
     
     
@@ -122,7 +127,7 @@ public class UtilisateurService implements MyCrud<Utilisateur> {
 
     @Override
     public int supprimer(Utilisateur u) {
-        
+    
         String req="DELETE FROM utilisateur WHERE `utilisateur`.`username` LIKE ?;";
         try {
             PreparedStatement prepStat = myConx.prepareStatement(req);

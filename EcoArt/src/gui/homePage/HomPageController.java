@@ -7,6 +7,9 @@ package gui.homePage;
 
 import Utilisateur.Utilisateur;
 import Utilisateur.UtilisateurService;
+import gui.Admin.Utilisateurs.UtilisateurPropertiesController;
+import gui.EspacePersonel.EspacePersonelController;
+import gui.ReclamationClient.PageReclamationsController;
 import gui.SignIn.SignInController;
 import java.io.IOException;
 import java.net.URL;
@@ -52,6 +55,8 @@ public class HomPageController implements Initializable {
     private Label errorLabel;
     Utilisateur current;
     UtilisateurService service=UtilisateurService.getInstance();
+    @FXML
+    private ImageView imageLogo;
 
     /**
      * Initializes the controller class.
@@ -63,8 +68,31 @@ public class HomPageController implements Initializable {
 
     @FXML
     private void onProfil(ActionEvent event) {
+           try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../EspacePersonel/EspacePersonel.fxml"));
+            Parent root = loader.load();
+            
+            
+              EspacePersonelController controller=loader.getController();
+              controller.setter(current,0);
+              
+            Stage cStage= (Stage) this.contact.getScene().getWindow();
+            cStage.setWidth(710);
+            cStage.setHeight(740);
+              
+            contact.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
+    
+    
+    
     @FXML
     private void onDisconnect(ActionEvent event) {
         try {
@@ -77,7 +105,7 @@ public class HomPageController implements Initializable {
               
               
             Stage cStage= (Stage) this.Event.getScene().getWindow();
-            cStage.setWidth(370);
+            cStage.setWidth(720);
             cStage.setHeight(520);
               
             Event.getScene().setRoot(root);
@@ -107,8 +135,30 @@ public class HomPageController implements Initializable {
 
     @FXML
     private void onContact(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../ReclamationClient/PageReclamations.fxml"));
+            Parent root = loader.load();
+            
+            
+             PageReclamationsController controller=loader.getController();
+            controller.setUtilisateur(current);
+            
+            Stage cStage= (Stage) this.contact.getScene().getWindow();
+            cStage.setWidth(620);
+            cStage.setHeight(550);
+              
+            contact.getScene().setRoot(root);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
+    
+    
+    
+    
+    
+    
     @FXML
     private void OnSearch(ActionEvent event) {
         String username = this.userSearch.getText();
@@ -116,9 +166,32 @@ public class HomPageController implements Initializable {
         if(found==null)
             errorLabel.setText("No user Found");
         else{
+            try {
+              
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Admin/Utilisateurs/UtilisateurProperties.fxml"));
+            Parent root = loader.load();
             
+            
+              UtilisateurPropertiesController controllerUtilisateur =loader.getController();
+              controllerUtilisateur.setter(current,found,1);
+              
+            Stage cStage= (Stage) this.Event.getScene().getWindow();
+            cStage.setWidth(720);
+            cStage.setHeight(720);
+              
+            Event.getScene().setRoot(root);
+            
+              
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         }
         
+    }
+    
+    public void setUtilisateur(Utilisateur current){
+        this.current=current;
     }
     
 }
