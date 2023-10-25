@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/ReclamationClient/PageReclamationsController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/homePage/HomPageController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/EspacePersonel/Update/UpdatePassword/NewPasswordInputController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/Admin/Reclamations/ReclamationsController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/Utilisateur/UtilisateurService.java</file>
             <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/Reclamation/ReclamationService.java</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/Inscription/MailVerification/MailVerificationCodeController.java</file>
-            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/ReclamationClient/ReclamationAjout/ReclamationClientController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/EspacePersonel/EspacePersonelController.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/Reclamation/Reclamation.java</file>
+            <file>file:/C:/Users/Utilisateur%202/Desktop/project%20PI/projectPi/EcoArt/src/gui/Inscription/InscriptionController.java</file>
         </group>
     </open-files>
 </project-private>

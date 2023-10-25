@@ -82,7 +82,12 @@ public class NewPasswordInputController implements Initializable {
         String passTwo= this.entryPassword2.getText();
         if(!passOne.equals(passTwo))
             errorLabel.setText("Passwords does not match !");
+        //A ajouter de la 
         else{
+            if(service.passwordStrength(passTwo)==-2){
+            errorLabel.setText("Weak Password");
+        }else{
+                // a la 
             Utilisateur nouveau = current;
             nouveau.setPassword(passTwo);
             service.modifier(current, nouveau);
@@ -102,6 +107,7 @@ public class NewPasswordInputController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+            }
             
         }
     }

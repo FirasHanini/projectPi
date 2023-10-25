@@ -193,7 +193,7 @@ public class ReclamationsController implements Initializable {
           
           idColumn.setCellValueFactory(new PropertyValueFactory("id"));
           this.StateColumn.setCellValueFactory(new PropertyValueFactory("etat"));
-       //   this.senderIdColumn.setCellValueFactory(new PropertyValueFactory("senderId"));
+          this.senderIdColumn.setCellValueFactory(new PropertyValueFactory("senderId"));
           this.senderUsername.setCellValueFactory(new PropertyValueFactory("senderUsername"));
         
       

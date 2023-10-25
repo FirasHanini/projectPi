@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -192,6 +193,8 @@ public class HomPageController implements Initializable {
     
     public void setUtilisateur(Utilisateur current){
         this.current=current;
+        Image pic=new Image("file:"+current.getPic());
+        this.picphoto.setImage(pic);
     }
     
 }
